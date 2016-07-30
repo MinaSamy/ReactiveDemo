@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="observable">Observable</string>
+    <string name="observable_desc">An <b>Observable</b> emits items to subscribers in hot or cold fashion.
+    Observables <b>subscribes</b> to observables to get notified when an observable emits an item</string>
+</resources>

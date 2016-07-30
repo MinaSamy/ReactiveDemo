@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Reactive Programming Demo</string>
+    <string name="title_activity_observable_details">ObservableDetailsActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
