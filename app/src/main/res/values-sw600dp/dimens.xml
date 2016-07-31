@@ -1,4 +1,4 @@
 <resources>
-    <dimen name="demo_item_card_view_width">200dp</dimen>
+    <dimen name="demo_item_card_view_width">300dp</dimen>
     <dimen name="demo_item_card_view_height">200dp</dimen>
 </resources>

@@ -22,15 +22,14 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
 
         //configure the layout manager
-        if(mRecyclerView.getLayoutManager() instanceof LinearLayoutManager){
-            LinearLayoutManager linearLayoutManager=(LinearLayoutManager)mRecyclerView.getLayoutManager();
-            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            //linearLayoutManager.set
-        }else{
+        if(mRecyclerView.getLayoutManager() instanceof GridLayoutManager){
             //for tablets it's an instance of GridLayoutManager
             GridLayoutManager gridLayoutManager=(GridLayoutManager)mRecyclerView.getLayoutManager();
-            gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
-            gridLayoutManager.setSpanCount(5);
+            gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+            gridLayoutManager.setSpanCount(3);
+        }else{
+            LinearLayoutManager linearLayoutManager=(LinearLayoutManager)mRecyclerView.getLayoutManager();
+            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         }
 
         //specify the adapter
