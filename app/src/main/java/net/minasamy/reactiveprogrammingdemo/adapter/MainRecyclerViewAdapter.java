@@ -1,8 +1,10 @@
 package net.minasamy.reactiveprogrammingdemo.adapter;
 
 import android.animation.Animator;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,6 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTitleTextView;
         private TextView mDescriptionTextView;
-        private Context mContext;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -63,17 +64,19 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
         @Override
         public void onClick(View v) {
-            int itemPosition=this.getAdapterPosition();
-            DemoItem item=mDataSet.get(itemPosition);
-            Intent intent= ObservableDetailsActivity.makeIntent(this.itemView.getContext(),item);
-            final Animator animator= UiUtils.makeCardViewClickAnimation(v);
+            int itemPosition = this.getAdapterPosition();
+            DemoItem item = mDataSet.get(itemPosition);
+            Intent intent = ObservableDetailsActivity.makeIntent(this.itemView.getContext(), item);
+            final Animator animator = UiUtils.makeCardViewClickAnimation(v);
             v.post(new Runnable() {
                 @Override
                 public void run() {
                     animator.start();
                 }
             });
-            this.itemView.getContext().startActivity(intent);
+            Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) this.itemView.getContext(),
+                    v, v.getResources().getString(R.string.transition_card_view)).toBundle();
+            this.itemView.getContext().startActivity(intent, bundle);
         }
     }
 
