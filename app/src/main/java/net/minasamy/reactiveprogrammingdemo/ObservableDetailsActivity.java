@@ -1,5 +1,7 @@
 package net.minasamy.reactiveprogrammingdemo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,7 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+
 public class ObservableDetailsActivity extends AppCompatActivity {
+
+    private static final String EXTRA_ITEM="extra_item";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,12 @@ public class ObservableDetailsActivity extends AppCompatActivity {
             }
         });*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    static public Intent makeIntent(Context context, DemoItem item){
+        Intent intent=new Intent(context,ObservableDetailsActivity.class);
+        intent.putExtra(EXTRA_ITEM,item);
+        return intent;
     }
 
 }

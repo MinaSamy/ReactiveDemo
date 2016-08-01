@@ -1,14 +1,18 @@
 package net.minasamy.reactiveprogrammingdemo.adapter;
 
+import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import net.minasamy.reactiveprogrammingdemo.ObservableDetailsActivity;
 import net.minasamy.reactiveprogrammingdemo.R;
 import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+import net.minasamy.reactiveprogrammingdemo.ui.UiUtils;
 
 import java.util.List;
 
@@ -40,7 +44,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         return mDataSet.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTitleTextView;
         private TextView mDescriptionTextView;
         private Context mContext;
@@ -49,11 +53,27 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
             super(itemView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.title_text);
             mDescriptionTextView = (TextView) itemView.findViewById(R.id.desc_text);
+            itemView.setOnClickListener(this);
         }
 
         public void setData(DemoItem item) {
             mTitleTextView.setText(item.getTitleResourceId());
             mDescriptionTextView.setText(item.getDescriptionResourceId());
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition=this.getAdapterPosition();
+            DemoItem item=mDataSet.get(itemPosition);
+            Intent intent= ObservableDetailsActivity.makeIntent(this.itemView.getContext(),item);
+            final Animator animator= UiUtils.makeCardViewClickAnimation(v);
+            v.post(new Runnable() {
+                @Override
+                public void run() {
+                    animator.start();
+                }
+            });
+            this.itemView.getContext().startActivity(intent);
         }
     }
 
