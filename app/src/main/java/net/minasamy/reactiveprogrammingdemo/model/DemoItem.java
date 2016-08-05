@@ -18,14 +18,25 @@ public class DemoItem implements Parcelable {
         BASIC, MEDIUM, ADVANCED
     }
 
+    static public enum DemoItemType{
+        BASIC_OBSERVABLE
+    }
+
     private int titleResourceId;
     private int descriptionResourceId;
     private ConceptLevel level;
 
-    public DemoItem(int titleResourceId, int descriptionResourceId, ConceptLevel level) {
+    public DemoItemType getDemoItemType() {
+        return demoItemType;
+    }
+
+    private DemoItemType demoItemType;
+
+    public DemoItem(int titleResourceId, int descriptionResourceId, ConceptLevel level,DemoItemType type) {
         this.titleResourceId = titleResourceId;
         this.descriptionResourceId = descriptionResourceId;
         this.level = level;
+        this.demoItemType=type;
     }
 
 
@@ -46,6 +57,7 @@ public class DemoItem implements Parcelable {
         titleResourceId = in.readInt();
         descriptionResourceId = in.readInt();
         level = (ConceptLevel) in.readSerializable();
+        demoItemType=(DemoItemType)in.readSerializable();
     }
 
 
@@ -71,22 +83,13 @@ public class DemoItem implements Parcelable {
         dest.writeInt(titleResourceId);
         dest.writeInt(descriptionResourceId);
         dest.writeSerializable(level);
+        dest.writeSerializable(demoItemType);
     }
 
     static public List<DemoItem> getSampleData() {
         return new ArrayList<DemoItem>() {
             {
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC));
+                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC,DemoItemType.BASIC_OBSERVABLE));
             }
         };
     }

@@ -7,11 +7,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+import net.minasamy.reactiveprogrammingdemo.presenter.DetailsPresenter;
+import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
 
-public class ObservableDetailsActivity extends AppCompatActivity {
+public class ObservableDetailsActivity extends AppCompatActivity implements DetailsView<Integer> {
 
     private static final String EXTRA_ITEM="extra_item";
 
@@ -22,15 +25,11 @@ public class ObservableDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       if(getIntent().hasExtra(EXTRA_ITEM)){
+           DemoItem demoItem=getIntent().getParcelableExtra(EXTRA_ITEM);
+           DetailsPresenter presenter=new DetailsPresenter(this,demoItem.getDemoItemType());
+           presenter.startDemo();
+       }
     }
 
     static public Intent makeIntent(Context context, DemoItem item){
@@ -39,4 +38,8 @@ public class ObservableDetailsActivity extends AppCompatActivity {
         return intent;
     }
 
+    @Override
+    public void onReceiveResult(Integer result) {
+        Log.i("Received",String.valueOf(result));
+    }
 }
