@@ -19,7 +19,7 @@ public class UiUtils {
             return animator;
         } else {
             ObjectAnimator animator=ObjectAnimator.ofFloat(v,"alpha",0.0f,1.0f);
-            animator.setDuration(300);
+            animator.setDuration(100);
             return animator;
         }
     }

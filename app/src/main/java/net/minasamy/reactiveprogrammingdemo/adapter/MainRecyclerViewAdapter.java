@@ -77,6 +77,8 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
             Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) this.itemView.getContext(),
                     v, v.getResources().getString(R.string.transition_card_view)).toBundle();
             this.itemView.getContext().startActivity(intent, bundle);
+            //ActivityOptionsCompat.makeCustomAnimation(R.anim.slide_from_right,R.anim.slide_from_right)
+
         }
     }
 

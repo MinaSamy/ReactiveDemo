@@ -2,6 +2,9 @@
 
     <style name="AppTheme" parent="@style/AppBaseTheme">
         <item name="android:windowActivityTransitions">true</item>
+        <item name="android:activityOpenEnterAnimation">@anim/slide_from_right</item>
+        <item name="android:windowEnterTransition">@transition/activity_enter</item>
+        <item name="android:windowExitTransition">@transition/activity_exit</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

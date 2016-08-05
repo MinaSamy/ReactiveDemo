@@ -8,8 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme" parent="@style/AppBaseTheme">
+    <style name="animationStyle" parent="@android:style/Animation.Translucent">
 
+    </style>
+    <style name="AppTheme" parent="@style/AppBaseTheme">
+        <item name="android:windowAnimationStyle">@style/animationStyle</item>
+        <item name="android:windowEnterAnimation">@anim/slide_from_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_from_left</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
