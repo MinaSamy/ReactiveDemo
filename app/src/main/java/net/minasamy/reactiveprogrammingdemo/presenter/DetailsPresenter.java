@@ -1,33 +1,47 @@
 package net.minasamy.reactiveprogrammingdemo.presenter;
 
-import net.minasamy.reactiveprogrammingdemo.model.DemoCommandFactory;
 import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
-import net.minasamy.reactiveprogrammingdemo.model.ReactiveDemoCommand;
+import net.minasamy.reactiveprogrammingdemo.model.ObservableFactory;
 import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
 
 import java.lang.ref.WeakReference;
 
+import rx.Observable;
+import rx.Subscriber;
+
 /**
  * Created by Mina Samy on 8/5/2016.
  */
-public class DetailsPresenter implements Presenter<Integer> {
+public class DetailsPresenter {
     private WeakReference<DetailsView> mView;
-    private ReactiveDemoCommand mDemoCommand;
+    private Observable<Integer> mObserver;
 
-    public DetailsPresenter(DetailsView view, DemoItem.DemoItemType demoItemType){
-        this.mView=new WeakReference<DetailsView>(view);
-        this.mDemoCommand= DemoCommandFactory.createDemoItem(demoItemType);
-        this.mDemoCommand.setReceiverPresenter(this);
+    public DetailsPresenter(DetailsView view, DemoItem.DemoItemType demoItemType) {
+        this.mView = new WeakReference<DetailsView>(view);
+        this.mObserver = ObservableFactory.createObservable(demoItemType);
+
     }
 
-    public void startDemo(){
-        mDemoCommand.execute();
+    public void startDemo() {
+        mObserver.subscribe(new Subscriber<Integer>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                if (mView.get() != null) {
+                    mView.get().onReceiveResult(integer);
+                }
+            }
+        });
     }
 
-    @Override
-    public void deliverResult(Integer result) {
-        if(mView.get()!=null){
-            mView.get().onReceiveResult(result);
-        }
-    }
+
 }
