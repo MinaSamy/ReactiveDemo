@@ -21,8 +21,22 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_observable_details" />
+    <ListView
+        android:id="@+id/items_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+    </ListView>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/items_list"
+        app:layout_anchorGravity="bottom|center_horizontal"
+        android:src="@android:drawable/ic_media_play"
+        android:layout_margin="@dimen/fab_margin"
+        app:rippleColor="@color/fab_ripple_color"
+        android:clickable="true"
+        android:id="@+id/play_fab"/>
 
 </android.support.design.widget.CoordinatorLayout>

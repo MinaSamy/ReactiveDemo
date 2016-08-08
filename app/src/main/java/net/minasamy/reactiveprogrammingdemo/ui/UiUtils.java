@@ -2,9 +2,11 @@ package net.minasamy.reactiveprogrammingdemo.ui;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.animation.LinearInterpolator;
 
 /**
  * Created by minsamy on 8/1/2016.
@@ -22,5 +24,16 @@ public class UiUtils {
             animator.setDuration(100);
             return animator;
         }
+    }
+
+    public static Animator makeFabAnimation(View v){
+        PropertyValuesHolder xValuesHolder=PropertyValuesHolder.ofFloat("scaleX",1.2f);
+        PropertyValuesHolder yValuesHolder=PropertyValuesHolder.ofFloat("scaleY",1.2f);
+        ObjectAnimator animator=ObjectAnimator.ofPropertyValuesHolder(v,xValuesHolder,yValuesHolder);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setDuration(500);
+        animator.setRepeatCount(ObjectAnimator.INFINITE);
+        animator.setRepeatMode(ObjectAnimator.REVERSE);
+        return animator;
     }
 }

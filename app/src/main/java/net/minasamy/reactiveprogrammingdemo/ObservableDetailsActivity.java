@@ -1,19 +1,31 @@
 package net.minasamy.reactiveprogrammingdemo;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
 import net.minasamy.reactiveprogrammingdemo.presenter.DetailsPresenter;
+import net.minasamy.reactiveprogrammingdemo.ui.UiUtils;
 import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ObservableDetailsActivity extends AppCompatActivity implements DetailsView<Integer> {
 
     private static final String EXTRA_ITEM = "extra_item";
+    private ListView mItemsList;
+    private ArrayAdapter<String> mAdapter;
+    private List<String> mDataSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +34,26 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mItemsList = (ListView) findViewById(R.id.items_list);
+        mDataSet = new ArrayList<>();
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDataSet);
+        mItemsList.setAdapter(mAdapter);
         if (getIntent().hasExtra(EXTRA_ITEM)) {
             DemoItem demoItem = getIntent().getParcelableExtra(EXTRA_ITEM);
-            DetailsPresenter presenter = new DetailsPresenter(this, demoItem.getDemoItemType());
-            presenter.startDemo();
+            final DetailsPresenter presenter = new DetailsPresenter(this, demoItem.getDemoItemType());
+
+
+            FloatingActionButton playFab = (FloatingActionButton) findViewById(R.id.play_fab);
+
+            final Animator animator = UiUtils.makeFabAnimation(playFab);
+            animator.start();
+            playFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    presenter.startDemo();
+                    animator.cancel();
+                }
+            });
         }
     }
 
@@ -40,5 +68,7 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
     @Override
     public void onReceiveResult(final Integer result) {
         Log.i("Received", String.valueOf(result));
+        mDataSet.add(String.format(getString(R.string.item), result));
+        mAdapter.notifyDataSetChanged();
     }
 }
