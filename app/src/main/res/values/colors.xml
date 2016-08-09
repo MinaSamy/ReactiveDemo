@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#098f26</color>
-    <color name="colorPrimaryDark">#7cde05</color>
-    <color name="colorAccent">#f40579</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#212121</color>
     <color name="grey_300">#E0E0E0</color>
+    <color name="fab_ripple_color">#757575</color>
 </resources>

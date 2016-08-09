@@ -12,17 +12,50 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp">
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:layout_collapseMode="pin"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_collapseMode="parallax"
+            android:id="@+id/details_text"
+            style="@style/DetailsTextStyle"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_observable_details" />
+    <ListView
+        android:id="@+id/items_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    </ListView>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/items_list"
+        app:layout_anchorGravity="bottom|center_horizontal"
+        android:src="@android:drawable/ic_media_play"
+        android:layout_margin="@dimen/fab_margin"
+        app:rippleColor="@color/fab_ripple_color"
+        android:clickable="true"
+        android:id="@+id/play_fab"/>
 
 </android.support.design.widget.CoordinatorLayout>
