@@ -35,4 +35,8 @@
 
     </style>
 
+    <style name="DetailsTextStyle" parent="@android:style/TextAppearance.Large">
+
+    </style>
+
 </resources>

@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
 import net.minasamy.reactiveprogrammingdemo.presenter.DetailsPresenter;
@@ -35,14 +37,15 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
         setSupportActionBar(toolbar);
 
         mItemsList = (ListView) findViewById(R.id.items_list);
+        ViewCompat.setNestedScrollingEnabled(mItemsList,true);
         mDataSet = new ArrayList<>();
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDataSet);
         mItemsList.setAdapter(mAdapter);
         if (getIntent().hasExtra(EXTRA_ITEM)) {
             DemoItem demoItem = getIntent().getParcelableExtra(EXTRA_ITEM);
             final DetailsPresenter presenter = new DetailsPresenter(this, demoItem.getDemoItemType());
-
-
+            TextView detailsTextView=(TextView)findViewById(R.id.details_text);
+            detailsTextView.setText(demoItem.getDescriptionResourceId());
             FloatingActionButton playFab = (FloatingActionButton) findViewById(R.id.play_fab);
 
             final Animator animator = UiUtils.makeFabAnimation(playFab);

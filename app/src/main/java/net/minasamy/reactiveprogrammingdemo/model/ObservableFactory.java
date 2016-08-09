@@ -15,7 +15,7 @@ public class ObservableFactory {
                 return Observable.create(new Observable.OnSubscribe<Integer>() {
                     @Override
                     public void call(Subscriber<? super Integer> subscriber) {
-                        for (int i = 0; i < 5; i++){
+                        for (int i = 0; i < 15; i++){
                             subscriber.onNext(i);
                         }
                         subscriber.onCompleted();
