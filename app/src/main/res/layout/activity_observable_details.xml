@@ -2,52 +2,47 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="net.minasamy.reactiveprogrammingdemo.ObservableDetailsActivity"
-    android:id="@+id/coordinator_layout">
+    tools:context="net.minasamy.reactiveprogrammingdemo.ObservableDetailsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/collapsing_toolbar_height"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="@color/colorPrimary"
-            app:expandedTitleMarginStart="@dimen/collapsing_toolbar_title_margin_start"
             app:expandedTitleMarginEnd="@dimen/collapsing_toolbar_title_margin_end"
-            android:id="@+id/collapsingToolbarLayout">
+            app:expandedTitleMarginStart="@dimen/collapsing_toolbar_title_margin_start"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
+            <TextView
+                android:id="@+id/details_text"
+                style="@style/DetailsTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/fab_ripple_color"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/collapsing_toolbar_title_margin_start"
+                android:paddingRight="@dimen/collapsing_toolbar_title_margin_start"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                app:layout_collapseMode="parallax" />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/collapsing_toolbar_title_margin_start"
-        android:paddingRight="@dimen/collapsing_toolbar_title_margin_start"
-        android:id="@+id/details_text"
-        style="@style/DetailsTextStyle"
-        app:layout_collapseMode="parallax"
-        android:background="@color/fab_ripple_color"
-        />
-
-
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:layout_collapseMode="pin"/>
-
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -55,24 +50,24 @@
     </android.support.design.widget.AppBarLayout>
 
 
-
     <ListView
         android:id="@+id/items_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </ListView>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/play_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:src="@android:drawable/ic_media_play"
         app:layout_anchor="@id/items_list"
         app:layout_anchorGravity="bottom|center_horizontal"
-        android:src="@android:drawable/ic_media_play"
-        android:layout_margin="@dimen/fab_margin"
-        app:rippleColor="@color/fab_ripple_color"
-        android:clickable="true"
-        android:id="@+id/play_fab"/>
+        app:rippleColor="@color/fab_ripple_color" />
 
 </android.support.design.widget.CoordinatorLayout>
