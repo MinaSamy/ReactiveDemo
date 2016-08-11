@@ -5,4 +5,5 @@ package net.minasamy.reactiveprogrammingdemo.view;
  */
 public interface DetailsView<T> {
     void onReceiveResult(T Result);
+    void onDataLoadingCompleted();
 }

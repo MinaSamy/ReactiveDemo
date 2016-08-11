@@ -26,7 +26,9 @@ public class DetailsPresenter {
         mObserver.subscribe(new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
-
+                if(mView.get()!=null){
+                    mView.get().onDataLoadingCompleted();
+                }
             }
 
             @Override

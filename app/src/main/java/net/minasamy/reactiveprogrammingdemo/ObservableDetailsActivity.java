@@ -57,14 +57,7 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
             FloatingActionButton playFab = (FloatingActionButton) findViewById(R.id.play_fab);
 
             //show snackbar
-            final Snackbar snackBar = Snackbar.make(findViewById(R.id.coordinator_layout), R.string.demo_hint, Snackbar.LENGTH_INDEFINITE);
-            snackBar.setActionTextColor(Color.WHITE);
-            snackBar.setAction(R.string.got_it, new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    snackBar.dismiss();
-                }
-            });
+            final Snackbar snackBar = makeSnackbar(findViewById(R.id.coordinator_layout), R.string.demo_hint);
             snackBar.show();
             final Animator animator = UiUtils.makeFabAnimation(playFab);
             animator.start();
@@ -111,5 +104,29 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
             }
         }, mInitialDelay);
         mInitialDelay += DELAY_OFFSET;
+    }
+
+    @Override
+    public void onDataLoadingCompleted() {
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Snackbar snackBar = makeSnackbar(findViewById(R.id.coordinator_layout), R.string.data_loading_completed);
+                snackBar.show();
+            }
+        },mInitialDelay);
+
+    }
+
+    private Snackbar makeSnackbar(View anchorView, int textResourceId) {
+        final Snackbar snackBar = Snackbar.make(anchorView, textResourceId, Snackbar.LENGTH_INDEFINITE);
+        snackBar.setActionTextColor(Color.WHITE);
+        snackBar.setAction(R.string.got_it, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackBar.dismiss();
+            }
+        });
+        return snackBar;
     }
 }

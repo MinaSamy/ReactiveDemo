@@ -6,4 +6,5 @@
     <string name="item">Item %1$s</string>
     <string name="demo_hint">Click the play button to see the demo in action</string>
     <string name="got_it">Got it</string>
+    <string name="data_loading_completed">Data loading completed</string>
 </resources>
