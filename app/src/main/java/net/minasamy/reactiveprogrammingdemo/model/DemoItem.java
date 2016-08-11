@@ -20,7 +20,8 @@ public class DemoItem implements Parcelable {
 
     static public enum DemoItemType {
         BASIC_OBSERVABLE,
-        OBSERVABLE_FROM
+        OBSERVABLE_FROM,
+        OBSERVABLE_JUST
     }
 
     private int titleResourceId;
@@ -102,6 +103,7 @@ public class DemoItem implements Parcelable {
             {
                 add(new DemoItem(R.string.observable, R.string.observable_desc, R.string.observable_short_desc, ConceptLevel.BASIC, DemoItemType.BASIC_OBSERVABLE));
                 add(new DemoItem(R.string.observable_from, R.string.observable_from_desc, R.string.observable_from_short_desc, ConceptLevel.BASIC, DemoItemType.OBSERVABLE_FROM));
+                add(new DemoItem(R.string.observable_just, R.string.observable_just_desc, R.string.observable_just_short_desc, ConceptLevel.BASIC, DemoItemType.OBSERVABLE_JUST));
             }
         };
     }
