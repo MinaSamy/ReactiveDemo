@@ -1,5 +1,8 @@
 package net.minasamy.reactiveprogrammingdemo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rx.Observable;
 import rx.Subscriber;
 
@@ -21,6 +24,20 @@ public class ObservableFactory {
                         subscriber.onCompleted();
                     }
                 });
+            }
+            case OBSERVABLE_FROM:
+            {
+                List<Integer>items=new ArrayList<Integer>(){
+                    {
+                        add(0);
+                        add(1);
+                        add(2);
+                        add(3);
+                        add(4);
+                        add(5);
+                    }
+                };
+                return Observable.from(items);
             }
         }
     }

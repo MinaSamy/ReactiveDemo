@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="observable">Observable</string>
-    <string name="observable_desc">An <b>Observable</b> emits items to subscribers in hot or cold fashion.
+    <string name="observable_short_desc">An <b>Observable</b> emits items to subscribers in hot or cold fashion.
     Observables <b>subscribes</b> to observables to get notified when an observable emits an item</string>
+    <string name="observable_desc">An <b>Observable</b> emits items to observers by calling <b>observer.onNext(T item)</b>.
+    When all items are emitted, the observable can notify the observer by calling <b>observer.onCompleted()</b></string>
+
+    <string name="observable_from">Observable from()</string>
+    <string name="observable_from_short_desc">An <b>Observable</b> emits items from a list to subscribers</string>
+    <string name="observable_from_desc">An <b>Observable</b> emits items to from a list, saving us the need to emit items
+    one by one and calling <b>observer.onNext()</b> and <b>observer.onCompleted()</b> manually</string>
 </resources>

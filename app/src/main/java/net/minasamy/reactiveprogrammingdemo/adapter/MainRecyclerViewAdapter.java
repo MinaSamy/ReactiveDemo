@@ -59,7 +59,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
         public void setData(DemoItem item) {
             mTitleTextView.setText(item.getTitleResourceId());
-            mDescriptionTextView.setText(item.getDescriptionResourceId());
+            mDescriptionTextView.setText(item.getShortDescriptionResourceId());
         }
 
         @Override

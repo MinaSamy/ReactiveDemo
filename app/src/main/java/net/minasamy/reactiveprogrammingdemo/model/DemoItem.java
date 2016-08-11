@@ -18,12 +18,16 @@ public class DemoItem implements Parcelable {
         BASIC, MEDIUM, ADVANCED
     }
 
-    static public enum DemoItemType{
-        BASIC_OBSERVABLE
+    static public enum DemoItemType {
+        BASIC_OBSERVABLE,
+        OBSERVABLE_FROM
     }
 
     private int titleResourceId;
     private int descriptionResourceId;
+
+
+    private int shortDescriptionResourceId;
     private ConceptLevel level;
 
     public DemoItemType getDemoItemType() {
@@ -32,11 +36,12 @@ public class DemoItem implements Parcelable {
 
     private DemoItemType demoItemType;
 
-    public DemoItem(int titleResourceId, int descriptionResourceId, ConceptLevel level,DemoItemType type) {
+    public DemoItem(int titleResourceId, int descriptionResourceId, int shortDescriptionResourceId, ConceptLevel level, DemoItemType type) {
         this.titleResourceId = titleResourceId;
         this.descriptionResourceId = descriptionResourceId;
+        this.shortDescriptionResourceId = shortDescriptionResourceId;
         this.level = level;
-        this.demoItemType=type;
+        this.demoItemType = type;
     }
 
 
@@ -48,6 +53,10 @@ public class DemoItem implements Parcelable {
         return descriptionResourceId;
     }
 
+    public int getShortDescriptionResourceId() {
+        return shortDescriptionResourceId;
+    }
+
     public ConceptLevel getLevel() {
         return level;
     }
@@ -56,8 +65,9 @@ public class DemoItem implements Parcelable {
     private DemoItem(Parcel in) {
         titleResourceId = in.readInt();
         descriptionResourceId = in.readInt();
+        shortDescriptionResourceId = in.readInt();
         level = (ConceptLevel) in.readSerializable();
-        demoItemType=(DemoItemType)in.readSerializable();
+        demoItemType = (DemoItemType) in.readSerializable();
     }
 
 
@@ -82,6 +92,7 @@ public class DemoItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(titleResourceId);
         dest.writeInt(descriptionResourceId);
+        dest.writeInt(shortDescriptionResourceId);
         dest.writeSerializable(level);
         dest.writeSerializable(demoItemType);
     }
@@ -89,7 +100,8 @@ public class DemoItem implements Parcelable {
     static public List<DemoItem> getSampleData() {
         return new ArrayList<DemoItem>() {
             {
-                add(new DemoItem(R.string.observable, R.string.observable_desc, ConceptLevel.BASIC,DemoItemType.BASIC_OBSERVABLE));
+                add(new DemoItem(R.string.observable, R.string.observable_desc, R.string.observable_short_desc, ConceptLevel.BASIC, DemoItemType.BASIC_OBSERVABLE));
+                add(new DemoItem(R.string.observable_from, R.string.observable_from_desc, R.string.observable_from_short_desc, ConceptLevel.BASIC, DemoItemType.OBSERVABLE_FROM));
             }
         };
     }

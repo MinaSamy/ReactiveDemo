@@ -53,7 +53,7 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
             TextView detailsTextView = (TextView) findViewById(R.id.details_text);
             CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
             collapsingToolbarLayout.setTitle(getString(demoItem.getTitleResourceId()));
-            detailsTextView.setText(demoItem.getDescriptionResourceId());
+            detailsTextView.setText(demoItem.getShortDescriptionResourceId());
             FloatingActionButton playFab = (FloatingActionButton) findViewById(R.id.play_fab);
 
             //show snackbar

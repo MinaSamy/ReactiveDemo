@@ -39,4 +39,10 @@
 
     </style>
 
+    <style name="CardViewDescriptionTextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_margin">@dimen/text_item_margin</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

@@ -7,10 +7,11 @@
     <dimen name="demo_item_card_view_width">@dimen/match_parent</dimen>
 
     <dimen name="demo_item_card_view_height">@dimen/wrap_content</dimen>
+    <dimen name="demo_item_card_view_description_max_height">100dp</dimen>
     <dimen name="card_view_padding">8dp</dimen>
     <dimen name="text_item_margin">4dp</dimen>
     <dimen name="card_view_margin">8dp</dimen>
     <dimen name="collapsing_toolbar_title_margin_start">48dp</dimen>
-    <dimen name="collapsing_toolbar_title_margin_end">48dp</dimen>
+    <dimen name="collapsing_toolbar_title_margin_end">24dp</dimen>
     <dimen name="collapsing_toolbar_height">280dp</dimen>
 </resources>
