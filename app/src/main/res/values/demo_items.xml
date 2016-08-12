@@ -14,6 +14,6 @@
     <string name="observable_just">Observable.just()</string>
     <string name="observable_just_short_desc">An <b>Observable</b> emits items returned from a method</string>
     <string name="observable_just_desc">An <b>Observable</b> emits items returned from an existing method.
-     For example it will emit a whole list returned from a method, it won't iterate the items in the list.
+     For example it will emit a whole list returned from a method, it won\'t iterate the items in the list.
     We can <b>just</b> to have more organized and testable code</string>
 </resources>
