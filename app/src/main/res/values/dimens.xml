@@ -14,4 +14,5 @@
     <dimen name="collapsing_toolbar_title_margin_start">48dp</dimen>
     <dimen name="collapsing_toolbar_title_margin_end">24dp</dimen>
     <dimen name="collapsing_toolbar_height">280dp</dimen>
+    <integer name="card_view_desc_text_max_lines">4</integer>
 </resources>

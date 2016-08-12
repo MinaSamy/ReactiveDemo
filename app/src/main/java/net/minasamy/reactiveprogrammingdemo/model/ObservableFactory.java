@@ -5,6 +5,10 @@ import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.subjects.AsyncSubject;
+import rx.subjects.BehaviorSubject;
+import rx.subjects.PublishSubject;
+import rx.subjects.ReplaySubject;
 
 /**
  * Created by Mina Samy on 8/5/2016.
@@ -30,6 +34,32 @@ public class ObservableFactory {
             }
             case OBSERVABLE_JUST: {
                 return (Observable<T>) Observable.just(getItems());
+            }
+            case PUBLISH_SUBJECT: {
+                PublishSubject<String> publishSubject = PublishSubject.create();
+                return (Observable<T>) publishSubject;
+            }
+            case BEHAVIOR_SUBJECT:{
+                BehaviorSubject<String> behaviorSubject=BehaviorSubject.create("1");
+                behaviorSubject.onNext("2");
+                behaviorSubject.onNext("3");
+                behaviorSubject.onNext("4");
+                return (Observable<T>) behaviorSubject;
+            }
+            case REPLAY_SUBJECT:{
+                ReplaySubject<Integer>replaySubject=ReplaySubject.create();
+                for(int i:getItems()){
+                    replaySubject.onNext(i);
+                }
+                return (Observable<T>) replaySubject;
+            }
+            case ASYNC_SUBJECT:{
+                AsyncSubject<Integer> asyncSubject=AsyncSubject.create();
+                for(int i:getItems()){
+                    asyncSubject.onNext(i);
+                }
+                asyncSubject.onCompleted();
+                return (Observable<T>) asyncSubject;
             }
         }
     }
