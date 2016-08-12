@@ -23,9 +23,10 @@ import net.minasamy.reactiveprogrammingdemo.ui.UiUtils;
 import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class ObservableDetailsActivity extends AppCompatActivity implements DetailsView<Integer> {
+public class ObservableDetailsActivity extends AppCompatActivity implements DetailsView<Object> {
 
     private static final String EXTRA_ITEM = "extra_item";
     private ListView mItemsList;
@@ -84,14 +85,19 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
     private final int DELAY_OFFSET = 1000;
 
     @Override
-    public void onReceiveResult(final Integer result) {
+    public void onReceiveResult(final Object result) {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        mDataSet.add(String.format(getString(R.string.item), result));
+                        if(result instanceof List<?>){
+                            mDataSet.addAll((Collection<? extends String>) result);
+                        }else{
+                            mDataSet.add(String.format(getString(R.string.item), result));
+                        }
+
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

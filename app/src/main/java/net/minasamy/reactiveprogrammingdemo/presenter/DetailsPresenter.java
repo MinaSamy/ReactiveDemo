@@ -14,7 +14,7 @@ import rx.Subscriber;
  */
 public class DetailsPresenter {
     private WeakReference<DetailsView> mView;
-    private Observable<Integer> mObserver;
+    private Observable<Object> mObserver;
 
     public DetailsPresenter(DetailsView view, DemoItem.DemoItemType demoItemType) {
         this.mView = new WeakReference<DetailsView>(view);
@@ -23,7 +23,7 @@ public class DetailsPresenter {
     }
 
     public void startDemo() {
-        mObserver.subscribe(new Subscriber<Integer>() {
+        mObserver.subscribe(new Subscriber<Object>() {
             @Override
             public void onCompleted() {
                 if(mView.get()!=null){
@@ -37,9 +37,9 @@ public class DetailsPresenter {
             }
 
             @Override
-            public void onNext(Integer integer) {
+            public void onNext(Object item) {
                 if (mView.get() != null) {
-                    mView.get().onReceiveResult(integer);
+                    mView.get().onReceiveResult(item);
                 }
             }
         });

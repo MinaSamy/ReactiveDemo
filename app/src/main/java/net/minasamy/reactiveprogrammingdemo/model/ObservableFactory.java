@@ -11,11 +11,11 @@ import rx.Subscriber;
  */
 public class ObservableFactory {
 
-    public static Observable<Integer> createObservable(DemoItem.DemoItemType itemType) {
+    public static <T extends Object> Observable<T> createObservable(DemoItem.DemoItemType itemType) {
         switch (itemType) {
             case BASIC_OBSERVABLE:
             default: {
-                return Observable.create(new Observable.OnSubscribe<Integer>() {
+                return (Observable<T>) Observable.create(new Observable.OnSubscribe<Integer>() {
                     @Override
                     public void call(Subscriber<? super Integer> subscriber) {
                         for (int i = 0; i < 10; i++) {
@@ -26,21 +26,10 @@ public class ObservableFactory {
                 });
             }
             case OBSERVABLE_FROM: {
-                List<Integer> items = new ArrayList<Integer>() {
-                    {
-                        add(0);
-                        add(1);
-                        add(2);
-                        add(3);
-                        add(4);
-                        add(5);
-                    }
-                };
-                return Observable.from(items);
+                return (Observable<T>) Observable.from(getItems());
             }
             case OBSERVABLE_JUST: {
-                //return Observable.just(getItems());
-                return null;
+                return (Observable<T>) Observable.just(getItems());
             }
         }
     }
