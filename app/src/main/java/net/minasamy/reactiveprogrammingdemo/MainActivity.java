@@ -1,40 +1,72 @@
 package net.minasamy.reactiveprogrammingdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-import net.minasamy.reactiveprogrammingdemo.adapter.MainRecyclerViewAdapter;
-import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
-import net.minasamy.reactiveprogrammingdemo.ui.MainRecyclerViewItemDecoration;
+import net.minasamy.reactiveprogrammingdemo.fragment.ReactiveConceptsFragment;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView=(RecyclerView)findViewById(R.id.main_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
 
-        //configure the layout manager
-        if(mRecyclerView.getLayoutManager() instanceof GridLayoutManager){
-            //for tablets it's an instance of GridLayoutManager
-            GridLayoutManager gridLayoutManager=(GridLayoutManager)mRecyclerView.getLayoutManager();
-            gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
-            gridLayoutManager.setSpanCount(3);
-        }else{
-            LinearLayoutManager linearLayoutManager=(LinearLayoutManager)mRecyclerView.getLayoutManager();
-            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        //setup toolbar
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
+
+    }
+
+
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        private static final int FRAGMENTS_COUNT = 2;
+
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
-        //specify the adapter
-        MainRecyclerViewAdapter adapter=new MainRecyclerViewAdapter(DemoItem.getSampleData());
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.addItemDecoration(new MainRecyclerViewItemDecoration());
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                default:
+                    return new ReactiveConceptsFragment();
+                case 1:
+                    return new Fragment();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return FRAGMENTS_COUNT;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                default:
+                    return getString(R.string.concepts);
+                case 1:
+                    return getString(R.string.demo);
+            }
+        }
     }
 }
