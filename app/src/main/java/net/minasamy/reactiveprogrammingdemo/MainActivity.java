@@ -1,5 +1,6 @@
 package net.minasamy.reactiveprogrammingdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -37,7 +38,12 @@ public class MainActivity extends AppCompatActivity implements DemosFragment.OnL
 
     @Override
     public void onListFragmentInteraction(Sample item) {
-
+        switch (item.getId()){
+            case 0:
+            default:
+                startActivity(new Intent(this,AppListActivity.class));
+                break;
+        }
     }
 
 

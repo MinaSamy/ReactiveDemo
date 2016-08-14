@@ -13,6 +13,7 @@ import java.util.List;
 public class Sample {
     private String title;
     private String description;
+    private int id;
 
     public String getTitle() {
         return title;
@@ -22,16 +23,20 @@ public class Sample {
         return description;
     }
 
-    public Sample(String description, String title) {
+    public Sample(int id, String description, String title) {
         this.description = description;
         this.title = title;
+        this.id=id;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public static List<Sample> getData(final Context context) {
         List<Sample> items = new ArrayList<Sample>() {
             {
-                add(new Sample(context.getString(R.string.apps_list), context.getString(R.string.apps_list_desc)));
+                add(new Sample(0,context.getString(R.string.apps_list), context.getString(R.string.apps_list_desc)));
             }
         };
         return items;
