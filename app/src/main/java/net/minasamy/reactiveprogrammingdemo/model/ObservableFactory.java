@@ -15,7 +15,7 @@ import rx.subjects.ReplaySubject;
  */
 public class ObservableFactory {
 
-    public static <T extends Object> Observable<T> createObservable(DemoItem.DemoItemType itemType) {
+    public static <T extends Object> Observable<T> createObservable(ObservableConcept.ConceptType itemType) {
         switch (itemType) {
             case BASIC_OBSERVABLE:
             default: {

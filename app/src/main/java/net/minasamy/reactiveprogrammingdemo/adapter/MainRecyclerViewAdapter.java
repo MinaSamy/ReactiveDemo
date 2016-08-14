@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import net.minasamy.reactiveprogrammingdemo.ObservableDetailsActivity;
 import net.minasamy.reactiveprogrammingdemo.R;
-import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+import net.minasamy.reactiveprogrammingdemo.model.ObservableConcept;
 import net.minasamy.reactiveprogrammingdemo.ui.UiUtils;
 
 import java.util.List;
@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
 
-    private List<DemoItem> mDataSet;
+    private List<ObservableConcept> mDataSet;
 
-    public MainRecyclerViewAdapter(List<DemoItem> dataset) {
+    public MainRecyclerViewAdapter(List<ObservableConcept> dataset) {
         this.mDataSet = dataset;
     }
 
@@ -57,7 +57,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
             itemView.setOnClickListener(this);
         }
 
-        public void setData(DemoItem item) {
+        public void setData(ObservableConcept item) {
             mTitleTextView.setText(item.getTitleResourceId());
             mDescriptionTextView.setText(item.getShortDescriptionResourceId());
         }
@@ -65,7 +65,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         @Override
         public void onClick(View v) {
             int itemPosition = this.getAdapterPosition();
-            DemoItem item = mDataSet.get(itemPosition);
+            ObservableConcept item = mDataSet.get(itemPosition);
             Intent intent = ObservableDetailsActivity.makeIntent(this.itemView.getContext(), item);
             final Animator animator = UiUtils.makeCardViewClickAnimation(v);
             v.post(new Runnable() {

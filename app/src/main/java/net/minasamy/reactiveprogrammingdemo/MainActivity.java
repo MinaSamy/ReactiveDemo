@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 
 import net.minasamy.reactiveprogrammingdemo.fragment.DemosFragment;
 import net.minasamy.reactiveprogrammingdemo.fragment.ReactiveConceptsFragment;
-import net.minasamy.reactiveprogrammingdemo.model.SampleItem;
+import net.minasamy.reactiveprogrammingdemo.model.Sample;
 
 
 public class MainActivity extends AppCompatActivity implements DemosFragment.OnListFragmentInteractionListener {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements DemosFragment.OnL
     }
 
     @Override
-    public void onListFragmentInteraction(SampleItem item) {
+    public void onListFragmentInteraction(Sample item) {
 
     }
 

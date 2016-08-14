@@ -11,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.minasamy.reactiveprogrammingdemo.R;
-import net.minasamy.reactiveprogrammingdemo.model.SampleItem;
+import net.minasamy.reactiveprogrammingdemo.adapter.ItemsRecyclerViewAdapter;
+import net.minasamy.reactiveprogrammingdemo.model.Sample;
 
 /**
  * A fragment representing a list of Items.
@@ -52,7 +53,7 @@ public class DemosFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new ItemsRecyclerViewAdapter(SampleItem.getData(getActivity()), mListener));
+            recyclerView.setAdapter(new ItemsRecyclerViewAdapter(Sample.getData(getActivity()), mListener));
         }
         return view;
     }
@@ -86,6 +87,6 @@ public class DemosFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(SampleItem item);
+        void onListFragmentInteraction(Sample item);
     }
 }

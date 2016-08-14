@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import net.minasamy.reactiveprogrammingdemo.R;
 import net.minasamy.reactiveprogrammingdemo.adapter.MainRecyclerViewAdapter;
-import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+import net.minasamy.reactiveprogrammingdemo.model.ObservableConcept;
 import net.minasamy.reactiveprogrammingdemo.ui.MainRecyclerViewItemDecoration;
 
 
@@ -44,7 +44,7 @@ public class ReactiveConceptsFragment extends Fragment {
         }
 
         //specify the adapter
-        MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(DemoItem.getSampleData());
+        MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(ObservableConcept.getSampleData());
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.addItemDecoration(new MainRecyclerViewItemDecoration());
         return fragmetnView;

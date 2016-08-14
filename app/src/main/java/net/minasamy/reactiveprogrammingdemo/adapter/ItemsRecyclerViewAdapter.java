@@ -1,4 +1,4 @@
-package net.minasamy.reactiveprogrammingdemo.fragment;
+package net.minasamy.reactiveprogrammingdemo.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,20 +8,20 @@ import android.widget.TextView;
 
 import net.minasamy.reactiveprogrammingdemo.R;
 import net.minasamy.reactiveprogrammingdemo.fragment.DemosFragment.OnListFragmentInteractionListener;
-import net.minasamy.reactiveprogrammingdemo.model.SampleItem;
+import net.minasamy.reactiveprogrammingdemo.model.Sample;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link SampleItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Sample} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  */
 public class ItemsRecyclerViewAdapter extends RecyclerView.Adapter<ItemsRecyclerViewAdapter.ViewHolder> {
 
-    private final List<SampleItem> mValues;
+    private final List<Sample> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public ItemsRecyclerViewAdapter(List<SampleItem> items, OnListFragmentInteractionListener listener) {
+    public ItemsRecyclerViewAdapter(List<Sample> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -35,7 +35,7 @@ public class ItemsRecyclerViewAdapter extends RecyclerView.Adapter<ItemsRecycler
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final SampleItem item = mValues.get(position);
+        final Sample item = mValues.get(position);
         holder.setDataItem(item);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +67,7 @@ public class ItemsRecyclerViewAdapter extends RecyclerView.Adapter<ItemsRecycler
             mDescriptionText = (TextView) view.findViewById(R.id.item_description);
         }
 
-        public void setDataItem(SampleItem item) {
+        public void setDataItem(Sample item) {
             this.mTitleText.setText(item.getTitle());
             this.mDescriptionText.setText(item.getDescription());
         }

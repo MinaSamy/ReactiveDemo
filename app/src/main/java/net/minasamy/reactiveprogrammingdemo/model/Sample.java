@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Mina.Samy on 8/14/2016.
  */
-public class SampleItem {
+public class Sample {
     private String title;
     private String description;
 
@@ -22,16 +22,16 @@ public class SampleItem {
         return description;
     }
 
-    public SampleItem(String description, String title) {
+    public Sample(String description, String title) {
         this.description = description;
         this.title = title;
     }
 
 
-    public static List<SampleItem> getData(final Context context) {
-        List<SampleItem> items = new ArrayList<SampleItem>() {
+    public static List<Sample> getData(final Context context) {
+        List<Sample> items = new ArrayList<Sample>() {
             {
-                add(new SampleItem(context.getString(R.string.apps_list), context.getString(R.string.apps_list_desc)));
+                add(new Sample(context.getString(R.string.apps_list), context.getString(R.string.apps_list_desc)));
             }
         };
         return items;

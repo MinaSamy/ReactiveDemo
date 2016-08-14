@@ -17,7 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+import net.minasamy.reactiveprogrammingdemo.model.ObservableConcept;
 import net.minasamy.reactiveprogrammingdemo.presenter.DetailsPresenter;
 import net.minasamy.reactiveprogrammingdemo.ui.UiUtils;
 import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
@@ -49,7 +49,7 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDataSet);
         mItemsList.setAdapter(mAdapter);
         if (getIntent().hasExtra(EXTRA_ITEM)) {
-            DemoItem demoItem = getIntent().getParcelableExtra(EXTRA_ITEM);
+            ObservableConcept demoItem = getIntent().getParcelableExtra(EXTRA_ITEM);
             final DetailsPresenter presenter = new DetailsPresenter(this, demoItem.getDemoItemType());
             TextView detailsTextView = (TextView) findViewById(R.id.details_text);
             CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
@@ -72,7 +72,7 @@ public class ObservableDetailsActivity extends AppCompatActivity implements Deta
         }
     }
 
-    static public Intent makeIntent(Context context, DemoItem item) {
+    static public Intent makeIntent(Context context, ObservableConcept item) {
         Intent intent = new Intent(context, ObservableDetailsActivity.class);
         intent.putExtra(EXTRA_ITEM, item);
         return intent;

@@ -1,6 +1,6 @@
 package net.minasamy.reactiveprogrammingdemo.presenter;
 
-import net.minasamy.reactiveprogrammingdemo.model.DemoItem;
+import net.minasamy.reactiveprogrammingdemo.model.ObservableConcept;
 import net.minasamy.reactiveprogrammingdemo.model.ObservableFactory;
 import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
 
@@ -18,7 +18,7 @@ public class DetailsPresenter {
     private WeakReference<DetailsView> mView;
     private Observable<Object> mObserver;
 
-    public DetailsPresenter(DetailsView view, DemoItem.DemoItemType demoItemType) {
+    public DetailsPresenter(DetailsView view, ObservableConcept.ConceptType demoItemType) {
         this.mView = new WeakReference<DetailsView>(view);
         this.mObserver = ObservableFactory.createObservable(demoItemType);
     }
