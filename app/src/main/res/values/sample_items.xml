@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="apps_list">Applications list</string>
+    <string name="apps_list_desc">A sample application that lists the applications installed on device</string>
+</resources>

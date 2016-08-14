@@ -9,10 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import net.minasamy.reactiveprogrammingdemo.fragment.DemosFragment;
 import net.minasamy.reactiveprogrammingdemo.fragment.ReactiveConceptsFragment;
+import net.minasamy.reactiveprogrammingdemo.model.SampleItem;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DemosFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onListFragmentInteraction(SampleItem item) {
+
+    }
+
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     return new ReactiveConceptsFragment();
                 case 1:
-                    return new Fragment();
+                    return new DemosFragment();
             }
         }
 
