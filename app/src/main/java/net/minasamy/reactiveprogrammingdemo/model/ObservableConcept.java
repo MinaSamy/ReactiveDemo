@@ -25,7 +25,8 @@ public class ObservableConcept implements Parcelable {
         PUBLISH_SUBJECT,
         BEHAVIOR_SUBJECT,
         REPLAY_SUBJECT,
-        ASYNC_SUBJECT
+        ASYNC_SUBJECT,
+        REPEAT
     }
 
     private int titleResourceId;
@@ -112,6 +113,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.behavior_subject,R.string.behavior_subject_desc,R.string.behavior_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.BEHAVIOR_SUBJECT));
                 add(new ObservableConcept(R.string.replay_subject,R.string.replay_subject_desc,R.string.replay_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.REPLAY_SUBJECT));
                 add(new ObservableConcept(R.string.async_subject,R.string.async_subject_desc,R.string.async_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.ASYNC_SUBJECT));
+                add(new ObservableConcept(R.string.repeat,R.string.repeat_desc,R.string.repeat_short_desc,ConceptLevel.MEDIUM,ConceptType.REPEAT));
             }
         };
     }

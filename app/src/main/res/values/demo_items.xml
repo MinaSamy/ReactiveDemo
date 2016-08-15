@@ -40,5 +40,9 @@
     <string name="async_subject">Async Subject</string>
     <string name="async_subject_short_desc">A <b>Subject</b> that publishes only the last item the observable has emitted.</string>
     <string name="async_subject_desc">A <b>Subject</b> that publishes only the last item the observable has emitted.</string>
+    
+    <string name="repeat">Repeat</string>
+    <string name="repeat_short_desc"><b>Observable.repeat()</b> repeats the items emitted by the observable.</string>
+    <string name="repeat_desc"><b>Observable.repeat()</b> repeats the items emitted by the observable.</string>
 
 </resources>

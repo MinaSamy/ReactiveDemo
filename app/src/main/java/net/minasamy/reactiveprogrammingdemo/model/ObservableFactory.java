@@ -61,6 +61,10 @@ public class ObservableFactory {
                 asyncSubject.onCompleted();
                 return (Observable<T>) asyncSubject;
             }
+            case REPEAT:{
+                return (Observable<T>) Observable.from(getItems())
+                        .repeat(2);
+            }
         }
     }
 
