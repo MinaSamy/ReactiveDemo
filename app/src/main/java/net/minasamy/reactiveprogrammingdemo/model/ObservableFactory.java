@@ -2,6 +2,7 @@ package net.minasamy.reactiveprogrammingdemo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -40,33 +41,33 @@ public class ObservableFactory {
                 PublishSubject<String> publishSubject = PublishSubject.create();
                 return (Observable<T>) publishSubject;
             }
-            case BEHAVIOR_SUBJECT:{
-                BehaviorSubject<String> behaviorSubject=BehaviorSubject.create("1");
+            case BEHAVIOR_SUBJECT: {
+                BehaviorSubject<String> behaviorSubject = BehaviorSubject.create("1");
                 behaviorSubject.onNext("2");
                 behaviorSubject.onNext("3");
                 behaviorSubject.onNext("4");
                 return (Observable<T>) behaviorSubject;
             }
-            case REPLAY_SUBJECT:{
-                ReplaySubject<Integer>replaySubject=ReplaySubject.create();
-                for(int i:getItems()){
+            case REPLAY_SUBJECT: {
+                ReplaySubject<Integer> replaySubject = ReplaySubject.create();
+                for (int i : getItems()) {
                     replaySubject.onNext(i);
                 }
                 return (Observable<T>) replaySubject;
             }
-            case ASYNC_SUBJECT:{
-                AsyncSubject<Integer> asyncSubject=AsyncSubject.create();
-                for(int i:getItems()){
+            case ASYNC_SUBJECT: {
+                AsyncSubject<Integer> asyncSubject = AsyncSubject.create();
+                for (int i : getItems()) {
                     asyncSubject.onNext(i);
                 }
                 asyncSubject.onCompleted();
                 return (Observable<T>) asyncSubject;
             }
-            case REPEAT:{
+            case REPEAT: {
                 return (Observable<T>) Observable.from(getItems())
                         .repeat(2);
             }
-            case DEFER:{
+            case DEFER: {
                 return (Observable<T>) Observable.defer(new Func0<Observable<T>>() {
                     @Override
                     public Observable<T> call() {
@@ -74,9 +75,13 @@ public class ObservableFactory {
                     }
                 });
             }
-            case RANGE:{
-                return (Observable<T>)Observable.range(5,3);
+            case RANGE: {
+                return (Observable<T>) Observable.range(5, 3);
             }
+            case INTERVAL: {
+                return (Observable<T>) Observable.interval(3, TimeUnit.SECONDS);
+            }
+
         }
     }
 
@@ -100,7 +105,7 @@ public class ObservableFactory {
         return items;
     }
 
-    private static Observable getItemsObservable(){
+    private static Observable getItemsObservable() {
         return Observable.from(getItems());
     }
 }
