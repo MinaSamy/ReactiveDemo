@@ -74,6 +74,9 @@ public class ObservableFactory {
                     }
                 });
             }
+            case RANGE:{
+                return (Observable<T>)Observable.range(5,3);
+            }
         }
     }
 

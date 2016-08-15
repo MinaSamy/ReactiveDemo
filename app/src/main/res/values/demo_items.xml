@@ -53,4 +53,10 @@
         for each new observer that subscribes to it, the observable creation is deferred until the <b>Observer</b>
      subscribes to it.</string>
 
+    <string name="range">Range</string>
+    <string name="range_short_desc">An <b>Observable</b> that emits items from a list, items are specified by the
+    starting index and the number of items to emit.</string>
+    <string name="range_desc">An <b>Observable</b> that emits items from a list, items are specified by the
+    starting index and the number of items to emit.</string>
+
 </resources>
