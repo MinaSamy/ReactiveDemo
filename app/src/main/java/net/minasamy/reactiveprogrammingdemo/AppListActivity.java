@@ -2,26 +2,39 @@ package net.minasamy.reactiveprogrammingdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 
+import net.minasamy.reactiveprogrammingdemo.adapter.AppsRecyclerViewAdapter;
 import net.minasamy.reactiveprogrammingdemo.model.AppInfo;
 import net.minasamy.reactiveprogrammingdemo.util.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
+import rx.schedulers.Schedulers;
 
 public class AppListActivity extends AppCompatActivity {
 
+    private RecyclerView mRecyclerView;
     private Subscription mSubscription;
+    private List<AppInfo> mApps = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //load apps list
-        mSubscription=Observable.from(Utils.getAppsList(this))
+        mRecyclerView = (RecyclerView) findViewById(R.id.appsRecyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        final AppsRecyclerViewAdapter adapter = new AppsRecyclerViewAdapter(mApps);
+        mRecyclerView.setAdapter(adapter);
+
+        //load mApps list
+        mSubscription = Observable.from(Utils.getAppsList(this)).subscribeOn(Schedulers.io())
                 .subscribe(new Observer<AppInfo>() {
                     @Override
                     public void onCompleted() {
@@ -35,7 +48,8 @@ public class AppListActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(AppInfo appInfo) {
-                        Log.i("App",appInfo.getLabel());
+                        mApps.add(appInfo);
+                        adapter.notifyDataSetChanged();
                     }
                 });
     }

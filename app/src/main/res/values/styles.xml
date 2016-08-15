@@ -43,6 +43,10 @@
     <style name="CardViewBaseStyle" parent="CardView.Light">
         <item name="cardElevation">2dp</item>
         <item name="android:background">#FFF</item>
+        <item name="android:layout_marginStart">@dimen/card_view_horizontal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/card_view_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/card_view_vertical_margin</item>
+        <item name="android:layout_marginBottom">@dimen/card_view_vertical_margin</item>
     </style>
 
     <style name="CardViewStyle" parent="@style/CardViewBaseStyle">

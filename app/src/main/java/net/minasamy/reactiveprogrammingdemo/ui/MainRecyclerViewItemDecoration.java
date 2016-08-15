@@ -16,7 +16,7 @@ public class MainRecyclerViewItemDecoration extends RecyclerView.ItemDecoration 
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
 
-        int margin = parent.getContext().getResources().getDimensionPixelSize(R.dimen.card_view_margin);
+        int margin = parent.getContext().getResources().getDimensionPixelSize(R.dimen.card_view_horizontal_margin);
         outRect.right = margin;
         outRect.left = margin;
         outRect.top = margin;
