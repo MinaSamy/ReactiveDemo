@@ -9,9 +9,11 @@ import net.minasamy.reactiveprogrammingdemo.util.Utils;
 
 import rx.Observable;
 import rx.Observer;
+import rx.Subscription;
 
 public class AppListActivity extends AppCompatActivity {
 
+    private Subscription mSubscription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +21,7 @@ public class AppListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //load apps list
-        Observable.from(Utils.getAppsList(this))
+        mSubscription=Observable.from(Utils.getAppsList(this))
                 .subscribe(new Observer<AppInfo>() {
                     @Override
                     public void onCompleted() {
@@ -38,4 +40,10 @@ public class AppListActivity extends AppCompatActivity {
                 });
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mSubscription.unsubscribe();
+    }
 }

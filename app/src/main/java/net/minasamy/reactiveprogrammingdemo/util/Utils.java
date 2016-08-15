@@ -21,7 +21,7 @@ public class Utils {
         final Intent appsIntent = new Intent(Intent.ACTION_MAIN);
         appsIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         List<ResolveInfo> resolveInfos = context.getPackageManager()
-                .queryIntentActivities(appsIntent, PackageManager.COMPONENT_ENABLED_STATE_DEFAULT);
+                .queryIntentActivities(appsIntent, PackageManager.MATCH_ALL);
         for(ResolveInfo info:resolveInfos){
             Drawable logo=info.loadIcon(context.getPackageManager());
             String label=info.loadLabel(context.getPackageManager()).toString();
