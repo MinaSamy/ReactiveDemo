@@ -5,6 +5,7 @@ import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func0;
 import rx.subjects.AsyncSubject;
 import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
@@ -65,6 +66,14 @@ public class ObservableFactory {
                 return (Observable<T>) Observable.from(getItems())
                         .repeat(2);
             }
+            case DEFER:{
+                return (Observable<T>) Observable.defer(new Func0<Observable<T>>() {
+                    @Override
+                    public Observable<T> call() {
+                        return getItemsObservable();
+                    }
+                });
+            }
         }
     }
 
@@ -86,5 +95,9 @@ public class ObservableFactory {
             }
         };
         return items;
+    }
+
+    private static Observable getItemsObservable(){
+        return Observable.from(getItems());
     }
 }

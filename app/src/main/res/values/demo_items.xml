@@ -45,4 +45,12 @@
     <string name="repeat_short_desc"><b>Observable.repeat()</b> repeats the items emitted by the observable.</string>
     <string name="repeat_desc"><b>Observable.repeat()</b> repeats the items emitted by the observable.</string>
 
+    <string name="defer">Defer</string>
+    <string name="defer_short_desc">An <b>Observable</b> that create other observable instances from a factory method.
+        The observables creation is deferred until an <b>Observer</b>
+     subscribes to it.</string>
+    <string name="defer_desc">An <b>Observable</b> that calls a factory method to create another new observable instance
+        for each new observer that subscribes to it, the observable creation is deferred until the <b>Observer</b>
+     subscribes to it.</string>
+
 </resources>

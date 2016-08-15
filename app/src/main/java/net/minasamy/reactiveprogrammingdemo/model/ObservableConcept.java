@@ -26,7 +26,8 @@ public class ObservableConcept implements Parcelable {
         BEHAVIOR_SUBJECT,
         REPLAY_SUBJECT,
         ASYNC_SUBJECT,
-        REPEAT
+        REPEAT,
+        DEFER
     }
 
     private int titleResourceId;
@@ -109,11 +110,12 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.observable, R.string.observable_desc, R.string.observable_short_desc, ConceptLevel.BASIC, ConceptType.BASIC_OBSERVABLE));
                 add(new ObservableConcept(R.string.observable_from, R.string.observable_from_desc, R.string.observable_from_short_desc, ConceptLevel.BASIC, ConceptType.OBSERVABLE_FROM));
                 add(new ObservableConcept(R.string.observable_just, R.string.observable_just_desc, R.string.observable_just_short_desc, ConceptLevel.BASIC, ConceptType.OBSERVABLE_JUST));
-                add(new ObservableConcept(R.string.publish_subject,R.string.publish_subject_desc,R.string.publish_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.PUBLISH_SUBJECT));
-                add(new ObservableConcept(R.string.behavior_subject,R.string.behavior_subject_desc,R.string.behavior_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.BEHAVIOR_SUBJECT));
-                add(new ObservableConcept(R.string.replay_subject,R.string.replay_subject_desc,R.string.replay_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.REPLAY_SUBJECT));
-                add(new ObservableConcept(R.string.async_subject,R.string.async_subject_desc,R.string.async_subject_short_desc,ConceptLevel.MEDIUM, ConceptType.ASYNC_SUBJECT));
-                add(new ObservableConcept(R.string.repeat,R.string.repeat_desc,R.string.repeat_short_desc,ConceptLevel.MEDIUM,ConceptType.REPEAT));
+                add(new ObservableConcept(R.string.publish_subject, R.string.publish_subject_desc, R.string.publish_subject_short_desc, ConceptLevel.MEDIUM, ConceptType.PUBLISH_SUBJECT));
+                add(new ObservableConcept(R.string.behavior_subject, R.string.behavior_subject_desc, R.string.behavior_subject_short_desc, ConceptLevel.MEDIUM, ConceptType.BEHAVIOR_SUBJECT));
+                add(new ObservableConcept(R.string.replay_subject, R.string.replay_subject_desc, R.string.replay_subject_short_desc, ConceptLevel.MEDIUM, ConceptType.REPLAY_SUBJECT));
+                add(new ObservableConcept(R.string.async_subject, R.string.async_subject_desc, R.string.async_subject_short_desc, ConceptLevel.MEDIUM, ConceptType.ASYNC_SUBJECT));
+                add(new ObservableConcept(R.string.repeat, R.string.repeat_desc, R.string.repeat_short_desc, ConceptLevel.MEDIUM, ConceptType.REPEAT));
+                add(new ObservableConcept(R.string.defer, R.string.defer_desc, R.string.defer_short_desc, ConceptLevel.MEDIUM, ConceptType.DEFER));
             }
         };
     }
