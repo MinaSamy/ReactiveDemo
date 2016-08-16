@@ -113,4 +113,12 @@
     determined by a predicate function. There is another variant called <b>lastOrDefault()</b> that provides a default value if the observable doesn\'t
      emit an item that satisfies the predicate.</string>
 
+    <string name="skip">Skip</string>
+    <string name="skip_short_desc">An <b>Observable</b> that skips the emitting the first N items.</string>
+    <string name="skip_desc">An <b>Observable</b> that skips the emitting the first N items.</string>
+
+    <string name="skip_last">Skip Last</string>
+    <string name="skip_last_short_desc">An <b>Observable</b> that skips the emitting the last N items.</string>
+    <string name="skip_last_desc">An <b>Observable</b> that skips the emitting the last N items.</string>
+
 </resources>

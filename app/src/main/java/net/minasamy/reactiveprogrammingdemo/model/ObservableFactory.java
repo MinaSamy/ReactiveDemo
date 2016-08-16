@@ -125,6 +125,12 @@ public class ObservableFactory {
             case LAST: {
                 return (Observable<T>) Observable.from(getItems()).last();
             }
+            case SKIP: {
+                return (Observable<T>) Observable.from(getItems()).skip(2);
+            }
+            case SKIP_LAST: {
+                return (Observable<T>) Observable.from(getItems()).skipLast(2);
+            }
         }
     }
 

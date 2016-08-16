@@ -37,7 +37,9 @@ public class ObservableConcept implements Parcelable {
         DISTINCT,
         DISTINCT_UNTIL_CHANGED,
         FIRST,
-        LAST
+        LAST,
+        SKIP,
+        SKIP_LAST
     }
 
     private int titleResourceId;
@@ -136,6 +138,8 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.distinct_until_changed,R.string.distinct_until_changed_desc,R.string.distinct_until_changed_short_desc,ConceptLevel.MEDIUM,ConceptType.DISTINCT_UNTIL_CHANGED));
                 add(new ObservableConcept(R.string.first,R.string.first_desc,R.string.first_short_desc,ConceptLevel.MEDIUM,ConceptType.FIRST));
                 add(new ObservableConcept(R.string.last,R.string.last_desc,R.string.last_short_desc,ConceptLevel.MEDIUM,ConceptType.LAST));
+                add(new ObservableConcept(R.string.skip,R.string.skip_desc,R.string.skip_short_desc,ConceptLevel.MEDIUM,ConceptType.SKIP));
+                add(new ObservableConcept(R.string.skip_last,R.string.skip_last,R.string.skip_last_desc,ConceptLevel.MEDIUM,ConceptType.SKIP_LAST));
             }
         };
     }
