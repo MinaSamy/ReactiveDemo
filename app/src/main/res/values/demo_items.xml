@@ -147,4 +147,12 @@
     <string name="map_desc">Applies a specific <b>Func</b> object on each item emitted by the observable. In this
     example we apply a <b>Func</b> multiply each emitted item by 2.</string>
 
+    <string name="flat_map">FlatMap</string>
+    <string name="flat_map_short_desc">An <b>Observable</b> that takes the items emitted from one observable and emits the items of another one. It can
+     convert the form of items emitted from an observable to another form.</string>
+    <string name="flat_map_desc">An <b>Observable</b> that takes the items emitted from one observable and emits the items of another one. It can
+     convert the form of items emitted from an observable to another form. In this example we have an observable that emits a list of strings, we apply
+    a <b>FlatMap</b> operator that returns an <b>obsrvable.from()</b> object that enables subscribers to observe each item individually
+     instead of observing the whole list as the first observable intended.</string>
+
 </resources>
