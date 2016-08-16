@@ -81,6 +81,9 @@ public class ObservableFactory {
             case INTERVAL: {
                 return (Observable<T>) Observable.interval(3, TimeUnit.SECONDS);
             }
+            case TIMER:{
+                return (Observable<T>)Observable.timer(3,TimeUnit.SECONDS);
+            }
 
         }
     }

@@ -18,7 +18,7 @@ public class ObservableConcept implements Parcelable {
         BASIC, MEDIUM, ADVANCED
     }
 
-    static public enum ConceptType {
+    public enum ConceptType {
         BASIC_OBSERVABLE,
         OBSERVABLE_FROM,
         OBSERVABLE_JUST,
@@ -29,7 +29,8 @@ public class ObservableConcept implements Parcelable {
         REPEAT,
         DEFER,
         RANGE,
-        INTERVAL
+        INTERVAL,
+        TIMER
     }
 
     private int titleResourceId;
@@ -120,6 +121,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.defer, R.string.defer_desc, R.string.defer_short_desc, ConceptLevel.MEDIUM, ConceptType.DEFER));
                 add(new ObservableConcept(R.string.range, R.string.range_desc, R.string.range_short_desc, ConceptLevel.MEDIUM, ConceptType.RANGE));
                 add(new ObservableConcept(R.string.interval, R.string.interval_desc, R.string.interval_short_desc, ConceptLevel.MEDIUM, ConceptType.INTERVAL));
+                add(new ObservableConcept(R.string.timer,R.string.timer_desc,R.string.timer_short_desc,ConceptLevel.MEDIUM,ConceptType.TIMER));
             }
         };
     }

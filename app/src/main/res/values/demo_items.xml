@@ -65,4 +65,10 @@
     <string name="interval_desc">An <b>Observable</b> that emits items every n time unit. In this example the observable
      emits a new item every 3 seconds.</string>
 
+    <string name="timer">Timer</string>
+    <string name="timer_short_desc">An <b>Observable</b> that emits an item after n time unit. It can also act as <b>Interval</b>
+    by emitting items after n time units each m time units.</string>
+    <string name="timer_desc">An <b>Observable</b> that emits an item after n time unit. It can also act as <b>Interval</b>
+    by emitting items after n time units each m time units.</string>
+
 </resources>
