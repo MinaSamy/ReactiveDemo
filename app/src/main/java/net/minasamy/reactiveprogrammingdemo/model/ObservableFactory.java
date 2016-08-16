@@ -96,17 +96,17 @@ public class ObservableFactory {
                     }
                 });
             }
-            case TAKE:{
+            case TAKE: {
                 return (Observable<T>) Observable.from(getItems()).take(2);
             }
-            case TAKE_LAST:{
+            case TAKE_LAST: {
                 return (Observable<T>) Observable.from(getItems()).takeLast(2);
             }
-            case DISTINCT:{
-                return (Observable<T>)Observable.from(getDuplicates()).distinct();
+            case DISTINCT: {
+                return (Observable<T>) Observable.from(getDuplicates()).distinct();
             }
-            case DISTINCT_UNTIL_CHANGED:{
-                return (Observable<T>)Observable.create(new Observable.OnSubscribe<Integer>() {
+            case DISTINCT_UNTIL_CHANGED: {
+                return (Observable<T>) Observable.create(new Observable.OnSubscribe<Integer>() {
                     @Override
                     public void call(Subscriber<? super Integer> subscriber) {
                         subscriber.onNext(0);
@@ -118,6 +118,12 @@ public class ObservableFactory {
                         subscriber.onNext(2);
                     }
                 }).distinctUntilChanged();
+            }
+            case FIRST: {
+                return (Observable<T>) Observable.from(getItems()).first();
+            }
+            case LAST: {
+                return (Observable<T>) Observable.from(getItems()).last();
             }
         }
     }
@@ -146,7 +152,7 @@ public class ObservableFactory {
         return Observable.from(getItems());
     }
 
-    private static List<Integer>getDuplicates(){
+    private static List<Integer> getDuplicates() {
         List<Integer> items = new ArrayList<Integer>() {
             {
                 add(0);

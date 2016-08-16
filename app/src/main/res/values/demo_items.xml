@@ -99,4 +99,18 @@
     <string name="distinct_until_changed_desc">An <b>Observable</b> that emits unique items from a sequence, it notifies
     the observer when a new unique item - that\'s different than the previous items - is emitted</string>
 
+    <string name="first">First</string>
+    <string name="first_short_desc">An <b>Observable</b> that emits the first item from a sequence. The first item can be
+    determined by a predicate function.</string>
+    <string name="first_desc">An <b>Observable</b> that emits the first item from a sequence. The first item can be
+    determined by a predicate function. There is another variant called <b>firstOrDefault()</b> that provides a default value if the observable doesn\'t
+     emit an item that satisfies the predicate.</string>
+
+    <string name="last">Last</string>
+    <string name="last_short_desc">An <b>Observable</b> that emits the last item from a sequence. The last item can be
+    determined by a predicate function.</string>
+    <string name="last_desc">An <b>Observable</b> that emits the last item from a sequence. The last item can be
+    determined by a predicate function. There is another variant called <b>lastOrDefault()</b> that provides a default value if the observable doesn\'t
+     emit an item that satisfies the predicate.</string>
+
 </resources>
