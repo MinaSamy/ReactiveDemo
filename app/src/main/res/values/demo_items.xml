@@ -81,4 +81,10 @@
     <string name="take_short_desc">An <b>Observable</b> emits only the first N items from a sequence then completes</string>
     <string name="take_desc">An <b>Observable</b> emits only the first N items from a sequence then completes</string>
 
+    <string name="take_last">Take Last</string>
+    <string name="take_last_short_desc">An <b>Observable</b> that emits last N items from a sequence.
+     In this example we emit the last two items from the list.</string>
+    <string name="take_last_desc">An <b>Observable</b> that emits last N items from a sequence.
+     In this example we emit the last two items from the list.</string>
+
 </resources>

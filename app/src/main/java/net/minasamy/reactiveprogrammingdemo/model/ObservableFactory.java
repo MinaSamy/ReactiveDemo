@@ -99,6 +99,9 @@ public class ObservableFactory {
             case TAKE:{
                 return (Observable<T>) Observable.from(getItems()).take(2);
             }
+            case TAKELAST:{
+                return (Observable<T>) Observable.from(getItems()).takeLast(2);
+            }
         }
     }
 
