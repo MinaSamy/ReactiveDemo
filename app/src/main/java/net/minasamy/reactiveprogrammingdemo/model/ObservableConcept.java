@@ -33,7 +33,8 @@ public class ObservableConcept implements Parcelable {
         TIMER,
         FILTER,
         TAKE,
-        TAKELAST
+        TAKE_LAST,
+        DISTINCT
     }
 
     private int titleResourceId;
@@ -127,7 +128,8 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.timer,R.string.timer_desc,R.string.timer_short_desc,ConceptLevel.MEDIUM,ConceptType.TIMER));
                 add(new ObservableConcept(R.string.filter,R.string.filter_desc,R.string.filter_short_desc,ConceptLevel.MEDIUM,ConceptType.FILTER));
                 add(new ObservableConcept(R.string.take,R.string.take_desc,R.string.take_short_desc,ConceptLevel.MEDIUM,ConceptType.TAKE));
-                add(new ObservableConcept(R.string.take_last,R.string.take_last_desc,R.string.take_last_short_desc,ConceptLevel.MEDIUM,ConceptType.TAKELAST));
+                add(new ObservableConcept(R.string.take_last,R.string.take_last_desc,R.string.take_last_short_desc,ConceptLevel.MEDIUM,ConceptType.TAKE_LAST));
+                add(new ObservableConcept(R.string.distinct,R.string.distinct_desc,R.string.distinct_short_desc,ConceptLevel.MEDIUM,ConceptType.DISTINCT));
             }
         };
     }

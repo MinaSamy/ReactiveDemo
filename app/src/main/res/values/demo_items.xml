@@ -87,4 +87,10 @@
     <string name="take_last_desc">An <b>Observable</b> that emits last N items from a sequence.
      In this example we emit the last two items from the list.</string>
 
+    <string name="distinct">Distinct</string>
+    <string name="distinct_short_desc">An <b>Observable</b> that emits unique items from a sequence, it gets
+    rid of duplicate items</string>
+    <string name="distinct_desc">An <b>Observable</b> that emits unique items from a sequence, it gets
+    rid of duplicate items</string>
+
 </resources>

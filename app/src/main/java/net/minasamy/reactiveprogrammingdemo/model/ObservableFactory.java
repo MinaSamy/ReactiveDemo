@@ -99,8 +99,11 @@ public class ObservableFactory {
             case TAKE:{
                 return (Observable<T>) Observable.from(getItems()).take(2);
             }
-            case TAKELAST:{
+            case TAKE_LAST:{
                 return (Observable<T>) Observable.from(getItems()).takeLast(2);
+            }
+            case DISTINCT:{
+                return (Observable<T>)Observable.from(getDuplicates()).distinct();
             }
         }
     }
@@ -127,5 +130,28 @@ public class ObservableFactory {
 
     private static Observable getItemsObservable() {
         return Observable.from(getItems());
+    }
+
+    private static List<Integer>getDuplicates(){
+        List<Integer> items = new ArrayList<Integer>() {
+            {
+                add(0);
+                add(0);
+                add(0);
+                add(1);
+                add(1);
+                add(1);
+                add(2);
+                add(2);
+                add(3);
+                add(3);
+                add(3);
+                add(4);
+                add(4);
+                add(5);
+                add(5);
+            }
+        };
+        return items;
     }
 }
