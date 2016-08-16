@@ -34,7 +34,8 @@ public class ObservableConcept implements Parcelable {
         FILTER,
         TAKE,
         TAKE_LAST,
-        DISTINCT
+        DISTINCT,
+        DISTINCT_UNTIL_CHANGED
     }
 
     private int titleResourceId;
@@ -130,6 +131,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.take,R.string.take_desc,R.string.take_short_desc,ConceptLevel.MEDIUM,ConceptType.TAKE));
                 add(new ObservableConcept(R.string.take_last,R.string.take_last_desc,R.string.take_last_short_desc,ConceptLevel.MEDIUM,ConceptType.TAKE_LAST));
                 add(new ObservableConcept(R.string.distinct,R.string.distinct_desc,R.string.distinct_short_desc,ConceptLevel.MEDIUM,ConceptType.DISTINCT));
+                add(new ObservableConcept(R.string.distinct_until_changed,R.string.distinct_until_changed_desc,R.string.distinct_until_changed_short_desc,ConceptLevel.MEDIUM,ConceptType.DISTINCT_UNTIL_CHANGED));
             }
         };
     }

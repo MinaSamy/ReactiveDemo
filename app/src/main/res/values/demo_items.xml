@@ -93,4 +93,10 @@
     <string name="distinct_desc">An <b>Observable</b> that emits unique items from a sequence, it gets
     rid of duplicate items</string>
 
+    <string name="distinct_until_changed">Distinct Until Changed</string>
+    <string name="distinct_until_changed_short_desc">An <b>Observable</b> that emits unique items from a sequence, it notifies
+    the observer when a new unique item - that\'s different than the previous items - is emitted</string>
+    <string name="distinct_until_changed_desc">An <b>Observable</b> that emits unique items from a sequence, it notifies
+    the observer when a new unique item - that\'s different than the previous items - is emitted</string>
+
 </resources>

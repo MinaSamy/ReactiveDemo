@@ -105,6 +105,20 @@ public class ObservableFactory {
             case DISTINCT:{
                 return (Observable<T>)Observable.from(getDuplicates()).distinct();
             }
+            case DISTINCT_UNTIL_CHANGED:{
+                return (Observable<T>)Observable.create(new Observable.OnSubscribe<Integer>() {
+                    @Override
+                    public void call(Subscriber<? super Integer> subscriber) {
+                        subscriber.onNext(0);
+                        subscriber.onNext(0);
+                        subscriber.onNext(0);
+                        subscriber.onNext(0);
+                        subscriber.onNext(1);
+                        subscriber.onNext(2);
+                        subscriber.onNext(2);
+                    }
+                }).distinctUntilChanged();
+            }
         }
     }
 
