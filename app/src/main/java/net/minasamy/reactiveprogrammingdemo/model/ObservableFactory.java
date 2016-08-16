@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func0;
+import rx.functions.Func1;
 import rx.subjects.AsyncSubject;
 import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
@@ -81,10 +82,23 @@ public class ObservableFactory {
             case INTERVAL: {
                 return (Observable<T>) Observable.interval(3, TimeUnit.SECONDS);
             }
-            case TIMER:{
-                return (Observable<T>)Observable.timer(3,TimeUnit.SECONDS);
+            case TIMER: {
+                return (Observable<T>) Observable.timer(3, TimeUnit.SECONDS);
             }
-
+            case FILTER: {
+                return (Observable<T>) Observable.from(getItems()).filter(new Func1<Integer, Boolean>() {
+                    @Override
+                    public Boolean call(Integer integer) {
+                        if (integer % 2 == 0) {
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+            }
+            case TAKE:{
+                return (Observable<T>) Observable.from(getItems()).take(2);
+            }
         }
     }
 

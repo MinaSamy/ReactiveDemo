@@ -71,4 +71,14 @@
     <string name="timer_desc">An <b>Observable</b> that emits an item after n time unit. It can also act as <b>Interval</b>
     by emitting items after n time units each m time units.</string>
 
+    <string name="filter">Filter</string>
+    <string name="filter_short_desc">An <b>Observable</b> that emits items that pass a filter function, in this
+     example we emit even number items only.</string>
+    <string name="filter_desc">An <b>Observable</b> that emits items that pass a filter function, in this
+     example we emit even number items only.</string>
+
+    <string name="take">Take</string>
+    <string name="take_short_desc">An <b>Observable</b> emits only the first N items from a sequence then completes</string>
+    <string name="take_desc">An <b>Observable</b> emits only the first N items from a sequence then completes</string>
+
 </resources>
