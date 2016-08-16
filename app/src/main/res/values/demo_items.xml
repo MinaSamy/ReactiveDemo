@@ -142,4 +142,9 @@
         in a certain time window. In this example an observable emits items every second, another observable
     emits the last item emitted within the 5 seconds window</string>
 
+    <string name="map">Map</string>
+    <string name="map_short_desc">Applies a specific <b>Func</b> object on each item emitted by the observable.</string>
+    <string name="map_desc">Applies a specific <b>Func</b> object on each item emitted by the observable. In this
+    example we apply a <b>Func</b> multiply each emitted item by 2.</string>
+
 </resources>

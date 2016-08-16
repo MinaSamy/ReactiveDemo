@@ -146,6 +146,14 @@ public class ObservableFactory {
                 Observable sampleObservable=itemsObservable.throttleLast(5,TimeUnit.SECONDS);
                 return sampleObservable;
             }
+            case MAP:{
+                return (Observable<T>) Observable.from(getItems()).map(new Func1<Integer, Integer>() {
+                    @Override
+                    public Integer call(Integer item) {
+                        return item*2;
+                    }
+                });
+            }
         }
     }
 
