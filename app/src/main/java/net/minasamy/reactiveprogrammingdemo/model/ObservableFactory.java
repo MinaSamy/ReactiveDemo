@@ -131,6 +131,21 @@ public class ObservableFactory {
             case SKIP_LAST: {
                 return (Observable<T>) Observable.from(getItems()).skipLast(2);
             }
+            case SAMPLE:{
+                Observable itemsObservable=Observable.interval(3,TimeUnit.SECONDS);
+                Observable sampleObservable=itemsObservable.sample(5,TimeUnit.SECONDS);
+                return sampleObservable;
+            }
+            case THROTTLE_FIRST:{
+                Observable itemsObservable=Observable.interval(1,TimeUnit.SECONDS);
+                Observable sampleObservable=itemsObservable.throttleFirst(5,TimeUnit.SECONDS);
+                return sampleObservable;
+            }
+            case THROTTLE_LAST:{
+                Observable itemsObservable=Observable.interval(1,TimeUnit.SECONDS);
+                Observable sampleObservable=itemsObservable.throttleLast(5,TimeUnit.SECONDS);
+                return sampleObservable;
+            }
         }
     }
 

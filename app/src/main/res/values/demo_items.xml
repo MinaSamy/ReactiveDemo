@@ -121,4 +121,25 @@
     <string name="skip_last_short_desc">An <b>Observable</b> that skips the emitting the last N items.</string>
     <string name="skip_last_desc">An <b>Observable</b> that skips the emitting the last N items.</string>
 
+    <string name="sample">Sample</string>
+    <string name="sample_short_desc">An <b>Observable</b> that emits the most recent emitted item from another observable
+        in a certain periodic time interval</string>
+    <string name="sample_desc">An <b>Observable</b> that emits the most recent emitted item from another observable
+        in a certain periodic time interval. In this example an observable emits items every 3 seconds, another observable
+    emits the last item emitted every 5 seconds</string>
+
+    <string name="throttle_first">Throttle First</string>
+    <string name="throttle_first_short_desc">An <b>Observable</b> that emits the first emitted item from another observable
+        in a certain time window</string>
+    <string name="throttle_first_desc">An <b>Observable</b> that emits the first emitted item from another observable
+        in a certain time window. In this example an observable emits items every second, another observable
+    emits the first item emitted within the 5 seconds window</string>
+
+    <string name="throttle_last">Throttle Last</string>
+    <string name="throttle_last_short_desc">An <b>Observable</b> that emits the last emitted item from another observable
+        in a certain time window</string>
+    <string name="throttle_last_desc">An <b>Observable</b> that emits the last emitted item from another observable
+        in a certain time window. In this example an observable emits items every second, another observable
+    emits the last item emitted within the 5 seconds window</string>
+
 </resources>

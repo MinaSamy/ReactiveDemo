@@ -39,7 +39,10 @@ public class ObservableConcept implements Parcelable {
         FIRST,
         LAST,
         SKIP,
-        SKIP_LAST
+        SKIP_LAST,
+        SAMPLE,
+        THROTTLE_FIRST,
+        THROTTLE_LAST
     }
 
     private int titleResourceId;
@@ -140,6 +143,9 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.last,R.string.last_desc,R.string.last_short_desc,ConceptLevel.MEDIUM,ConceptType.LAST));
                 add(new ObservableConcept(R.string.skip,R.string.skip_desc,R.string.skip_short_desc,ConceptLevel.MEDIUM,ConceptType.SKIP));
                 add(new ObservableConcept(R.string.skip_last,R.string.skip_last,R.string.skip_last_desc,ConceptLevel.MEDIUM,ConceptType.SKIP_LAST));
+                add(new ObservableConcept(R.string.sample,R.string.sample_desc,R.string.sample_short_desc,ConceptLevel.MEDIUM,ConceptType.SAMPLE));
+                add(new ObservableConcept(R.string.throttle_first,R.string.throttle_first_desc,R.string.throttle_first_short_desc,ConceptLevel.MEDIUM,ConceptType.THROTTLE_FIRST));
+                add(new ObservableConcept(R.string.throttle_last,R.string.throttle_last_desc,R.string.throttle_last_short_desc,ConceptLevel.MEDIUM,ConceptType.THROTTLE_LAST));
             }
         };
     }
