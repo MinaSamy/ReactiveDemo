@@ -18,7 +18,7 @@
     <string name="observable_just_desc">An <b>Observable</b> emits items returned from an existing method.
      For example it will emit a whole list returned from a method, it won\'t iterate the items in the list.
     We can <b>just</b> to have more organized and testable code</string>
-    
+
     <string name="publish_subject">Publish Subject</string>
     <string name="publish_subject_short_desc">A <b>Subject</b> can as an observable and an observer in the same time.
     It can subscribe to an observable or to itself, thus acting as an observer in both cases</string>
@@ -40,7 +40,7 @@
     <string name="async_subject">Async Subject</string>
     <string name="async_subject_short_desc">A <b>Subject</b> that publishes only the last item the observable has emitted.</string>
     <string name="async_subject_desc">A <b>Subject</b> that publishes only the last item the observable has emitted.</string>
-    
+
     <string name="repeat">Repeat</string>
     <string name="repeat_short_desc"><b>Observable.repeat()</b> repeats the items emitted by the observable.</string>
     <string name="repeat_desc"><b>Observable.repeat()</b> repeats the items emitted by the observable.</string>
@@ -150,8 +150,8 @@
     <string name="flat_map">FlatMap</string>
     <string name="flat_map_short_desc">An <b>Observable</b> that takes the items emitted from one observable and emits the items of another one. It can
      convert the form of items emitted from an observable to another form.</string>
-    <string name="flat_map_desc">An <b>Observable</b> that takes the items emitted from one observable and emits the items of another one. It can
-     convert the form of items emitted from an observable to another form. In this example we have an observable that emits a list of strings, we apply
+    <string name="flat_map_desc">An <b>Observable</b> that takes the items emitted from one observable and applies a function that returns an observable to each item emitted by the original observable.
+        In this example we have an observable that emits a list of strings, we apply
     a <b>FlatMap</b> operator that returns an <b>obsrvable.from()</b> object that enables subscribers to observe each item individually
      instead of observing the whole list as the first observable intended.</string>
 
