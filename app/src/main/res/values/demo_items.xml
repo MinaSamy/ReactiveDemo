@@ -164,8 +164,14 @@
         from the source observable is maintained.</string>
 
     <string name="flat_map_iterable">Flat Map Iterable</string>
-
     <string name="flat_map_iterable_short_desc">Similar to <b>flatMap</b>, it applies a function to each item emitted by the source observable, the function returns an iterable.</string>
     <string name="flat_map_iterable_desc">Similar to <b>flatMap</b>, it applies a function to each item emitted by the source observable, the function returns an iterable.</string>
+
+    <string name="scan">Scan</string>
+    <string name="scan_short_desc">Acts as an <b>accumulator</b>. it applies a function to each item emitted from the source observable,
+        the function result is injected to the source observable to be used with the next emitted item.</string>
+    <string name="scan_desc">Acts as an <b>accumulator</b>. it applies a function to each item emitted from the source observable,
+        the function result is injected to the source observable to be used with the next emitted item. In this example
+    we add each item emitted by the source observable to the next item emitted.</string>
 
 </resources>

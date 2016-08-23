@@ -9,6 +9,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func0;
 import rx.functions.Func1;
+import rx.functions.Func2;
 import rx.subjects.AsyncSubject;
 import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
@@ -179,6 +180,14 @@ public class ObservableFactory {
                     public Iterable<?> call(List<String> strings) {
                         Collections.reverse(strings);
                         return strings;
+                    }
+                });
+            }
+            case SCAN:{
+                return (Observable<T>) Observable.from(getItems()).scan(new Func2<Integer, Integer, Integer>() {
+                    @Override
+                    public Integer call(Integer integer, Integer integer2) {
+                        return integer+integer2;
                     }
                 });
             }

@@ -46,7 +46,8 @@ public class ObservableConcept implements Parcelable {
         MAP,
         FLAT_MAP,
         CONCAT_MAP,
-        FLAT_MAP_ITERABLE
+        FLAT_MAP_ITERABLE,
+        SCAN
     }
 
     private int titleResourceId;
@@ -154,6 +155,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.flat_map,R.string.flat_map_desc,R.string.flat_map_short_desc,ConceptLevel.ADVANCED, ConceptType.FLAT_MAP));
                 add(new ObservableConcept(R.string.concat_map,R.string.concat_map_desc,R.string.concat_map_short_desc,ConceptLevel.ADVANCED,ConceptType.CONCAT_MAP));
                 add(new ObservableConcept(R.string.flat_map_iterable,R.string.flat_map_iterable_desc,R.string.flat_map_iterable_short_desc,ConceptLevel.ADVANCED,ConceptType.FLAT_MAP_ITERABLE));
+                add(new ObservableConcept(R.string.scan,R.string.scan_desc,R.string.scan_short_desc,ConceptLevel.ADVANCED,ConceptType.SCAN));
             }
         };
     }
