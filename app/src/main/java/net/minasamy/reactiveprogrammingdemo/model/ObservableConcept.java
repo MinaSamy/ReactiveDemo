@@ -44,7 +44,8 @@ public class ObservableConcept implements Parcelable {
         THROTTLE_FIRST,
         THROTTLE_LAST,
         MAP,
-        FLAT_MAP
+        FLAT_MAP,
+        CONCAT_MAP
     }
 
     private int titleResourceId;
@@ -150,6 +151,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.throttle_last,R.string.throttle_last_desc,R.string.throttle_last_short_desc,ConceptLevel.MEDIUM,ConceptType.THROTTLE_LAST));
                 add(new ObservableConcept(R.string.map,R.string.map_desc,R.string.map_short_desc,ConceptLevel.MEDIUM,ConceptType.MAP));
                 add(new ObservableConcept(R.string.flat_map,R.string.flat_map_desc,R.string.flat_map_short_desc,ConceptLevel.ADVANCED, ConceptType.FLAT_MAP));
+                add(new ObservableConcept(R.string.concat_map,R.string.concat_map_desc,R.string.concat_map_short_desc,ConceptLevel.ADVANCED,ConceptType.CONCAT_MAP));
             }
         };
     }

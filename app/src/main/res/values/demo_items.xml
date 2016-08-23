@@ -150,9 +150,17 @@
     <string name="flat_map">FlatMap</string>
     <string name="flat_map_short_desc">An <b>Observable</b> that takes the items emitted from one observable and emits the items of another one. It can
      convert the form of items emitted from an observable to another form.</string>
-    <string name="flat_map_desc">An <b>Observable</b> that takes the items emitted from one observable and applies a function that returns an observable to each item emitted by the original observable.
+    <string name="flat_map_desc">An <b>Observable</b> that takes the items emitted from one observable and applies a function that returns an observable to each item emitted by the source observable and merge the results.
+        A side effect of the flat map method is that it can interleave the items after applying the function to them, the original order of emitted items may not be maintained after the merge.
         In this example we have an observable that emits a list of strings, we apply
     a <b>FlatMap</b> operator that returns an <b>obsrvable.from()</b> object that enables subscribers to observe each item individually
      instead of observing the whole list as the first observable intended.</string>
+
+    <string name="concat_map">ConcatMap</string>
+    <string name="concat_map_short_desc">Similar to <b>flatMap</b>, except it concatenates the results after applying the function. thus the order of the emitted items
+        from the source observable is maintained.</string>
+    <string name="concat_map_desc">Similar to <b>flatMap</b>, it applies a function that returns an observable to each item emitted by a source observable,
+        except it concatenates the results after applying the function. thus the order of the emitted items
+        from the source observable is maintained.</string>
 
 </resources>

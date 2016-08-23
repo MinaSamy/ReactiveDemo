@@ -164,6 +164,14 @@ public class ObservableFactory {
                     }
                 });
             }
+            case CONCAT_MAP:{
+                return (Observable<T>)getStringList().flatMap(new Func1<List<String>, Observable<?>>() {
+                    @Override
+                    public Observable<?> call(List<String> strings) {
+                        return Observable.from(strings);
+                    }
+                });
+            }
         }
     }
 
@@ -219,7 +227,7 @@ public class ObservableFactory {
         for(char i='A';i<='E';i++){
             items.add(String.valueOf(i));
         }
-        //subscriber recieves the whole list
+        //subscriber receives the whole list
         return Observable.just(items);
     }
 }
