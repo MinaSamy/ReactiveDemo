@@ -10,6 +10,7 @@ import rx.Subscriber;
 import rx.functions.Func0;
 import rx.functions.Func1;
 import rx.functions.Func2;
+import rx.observables.GroupedObservable;
 import rx.subjects.AsyncSubject;
 import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
@@ -191,6 +192,16 @@ public class ObservableFactory {
                     }
                 });
             }
+            case GROUP_BY:{
+                Observable<GroupedObservable<String, String>> groupedItems= Observable.from(getNamesList()).groupBy(new Func1<String, String>() {
+                    @Override
+                    public String call(String s) {
+                        //group items by the first letter
+                        return String.valueOf(s.charAt(0));
+                    }
+                });
+                return (Observable<T>) Observable.concat(groupedItems);
+            }
         }
     }
 
@@ -248,5 +259,20 @@ public class ObservableFactory {
         }
         //subscriber receives the whole list
         return Observable.just(items);
+    }
+
+    private static List<String>getNamesList(){
+        return new ArrayList<String>(){
+            {
+                add("John");
+                add("Mark");
+                add("Jack");
+                add("Brock");
+                add("Kate");
+                add("Randy");
+                add("Katherine");
+                add("Michael");
+            }
+        };
     }
 }

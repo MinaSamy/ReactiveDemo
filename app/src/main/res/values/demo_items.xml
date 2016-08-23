@@ -174,4 +174,9 @@
         the function result is injected to the source observable to be used with the next emitted item. In this example
     we add each item emitted by the source observable to the next item emitted.</string>
 
+    <string name="group_by">GroupBy</string>
+    <string name="group_by_short_desc">groups the items emitted from a source observable and returns a new <b>GroupedObservable</b> with the grouped items</string>
+    <string name="group_by_desc">groups the items emitted from a source observable and returns a new <b>GroupedObservable</b> with the grouped items.
+     In this example we group the names list by the first letter of each name.</string>
+
 </resources>
