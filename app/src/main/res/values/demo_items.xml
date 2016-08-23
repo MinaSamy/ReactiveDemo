@@ -163,4 +163,9 @@
         except it concatenates the results after applying the function. thus the order of the emitted items
         from the source observable is maintained.</string>
 
+    <string name="flat_map_iterable">Flat Map Iterable</string>
+
+    <string name="flat_map_iterable_short_desc">Similar to <b>flatMap</b>, it applies a function to each item emitted by the source observable, the function returns an iterable.</string>
+    <string name="flat_map_iterable_desc">Similar to <b>flatMap</b>, it applies a function to each item emitted by the source observable, the function returns an iterable.</string>
+
 </resources>

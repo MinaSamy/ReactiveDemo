@@ -1,6 +1,7 @@
 package net.minasamy.reactiveprogrammingdemo.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -169,6 +170,15 @@ public class ObservableFactory {
                     @Override
                     public Observable<?> call(List<String> strings) {
                         return Observable.from(strings);
+                    }
+                });
+            }
+            case FLAT_MAP_ITERABLE:{
+                return (Observable<T>)getStringList().flatMapIterable(new Func1<List<String>, Iterable<?>>() {
+                    @Override
+                    public Iterable<?> call(List<String> strings) {
+                        Collections.reverse(strings);
+                        return strings;
                     }
                 });
             }
