@@ -168,7 +168,7 @@ public class ObservableFactory {
                 });
             }
             case CONCAT_MAP:{
-                return (Observable<T>)getStringList().flatMap(new Func1<List<String>, Observable<?>>() {
+                return (Observable<T>)getStringList().concatMap(new Func1<List<String>, Observable<?>>() {
                     @Override
                     public Observable<?> call(List<String> strings) {
                         return Observable.from(strings);
@@ -204,6 +204,10 @@ public class ObservableFactory {
             }
             case BUFFER:{
                 return (Observable<T>) Observable.from(getItems()).buffer(2);
+            }
+            case WINDOW:
+            {
+                return (Observable<T>)  Observable.from(getItems()).window(2);
             }
         }
     }
