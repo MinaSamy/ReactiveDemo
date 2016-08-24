@@ -202,6 +202,9 @@ public class ObservableFactory {
                 });
                 return (Observable<T>) Observable.concat(groupedItems);
             }
+            case BUFFER:{
+                return (Observable<T>) Observable.from(getItems()).buffer(2);
+            }
         }
     }
 

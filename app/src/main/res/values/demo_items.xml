@@ -179,4 +179,11 @@
     <string name="group_by_desc">groups the items emitted from a source observable and returns a new <b>GroupedObservable</b> with the grouped items.
      In this example we group the names list by the first letter of each name.</string>
 
+    <string name="buffer">Buffer</string>
+    <string name="buffer_short_desc">Transforms an observable that emits a single item to an observable that emits <b>count</b> items as a list.
+     we can specify a <b>skip</b> value to skip emitting <b>n</b> items. Also we can specify a <b>timespan</b> to emit items every elapsed timespan.</string>
+    <string name="buffer_desc">Transforms an observable that emits a single item to an observable that emits <b>count</b> items as a list.
+     we can specify a <b>skip</b> value to skip emitting <b>n</b> items. Also we can specify a <b>timespan</b> so that the observable emits items the list every elapsed timespan.
+     In this example the buffer emits a list of two items at once.</string>
+
 </resources>
