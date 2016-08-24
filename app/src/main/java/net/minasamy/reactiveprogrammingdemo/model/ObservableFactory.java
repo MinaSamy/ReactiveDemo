@@ -209,6 +209,9 @@ public class ObservableFactory {
             {
                 return (Observable<T>)  Observable.from(getItems()).window(2);
             }
+            case CAST:{
+                return (Observable<T>) Observable.from(getNumbers()).cast(Integer.class);
+            }
         }
     }
 
@@ -232,6 +235,19 @@ public class ObservableFactory {
         return items;
     }
 
+    private static List<Number> getNumbers() {
+        List<Number> items = new ArrayList<Number>() {
+            {
+                add(0);
+                add(1);
+                add(2);
+                add(3);
+                add(4);
+                add(5);
+            }
+        };
+        return items;
+    }
     private static Observable getItemsObservable() {
         return Observable.from(getItems());
     }
@@ -267,6 +283,8 @@ public class ObservableFactory {
         //subscriber receives the whole list
         return Observable.just(items);
     }
+
+
 
     private static List<String>getNamesList(){
         return new ArrayList<String>(){

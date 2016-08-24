@@ -193,4 +193,9 @@
      We can also specify <b>skip</b> and <b>timespan</b> values.
      In this example the window emits a observables with 2 items each.</string>
 
+    <string name="cast">Cast</string>
+    <string name="cast_short_desc">similar to <b>map</b> it transforms (casts) each item emitted from a source observable from its type to another type.</string>
+    <string name="cast_desc">similar to <b>map</b> it transforms (casts) each item emitted from a source observable from its type to another type.
+     In this example we transform each emitted Number item to an Integer</string>
+
 </resources>
