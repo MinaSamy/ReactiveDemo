@@ -203,4 +203,8 @@
     <string name="merge_desc">An observable that combines two or more observables into a single observable. It\s useful when merging observables
      that emit items asynchronously, the merged onservable will maintain the order emission. If observables are merged synchronously, they will be concatenated.</string>
 
+    <string name="zip">Zip</string>
+    <string name="zip_short_desc">An observable that receives data emitted from two more observables, applies a <b>Func</b> on them and return a new observable.</string>
+    <string name="zip_desc">An observable that receives data emitted from two more observables, applies a <b>Func</b> on them and return a new observable.</string>
+
 </resources>

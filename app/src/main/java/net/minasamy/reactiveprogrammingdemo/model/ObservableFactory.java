@@ -75,7 +75,7 @@ public class ObservableFactory {
                 return (Observable<T>) Observable.defer(new Func0<Observable<T>>() {
                     @Override
                     public Observable<T> call() {
-                        return getItemsObservable();
+                        return getIntegerObservable();
                     }
                 });
             }
@@ -213,9 +213,21 @@ public class ObservableFactory {
                 return (Observable<T>) Observable.from(getNumbers()).cast(Integer.class);
             }
             case MERGE:{
-                Observable intObservable=getItemsObservable();
+                Observable intObservable= getIntegerObservable();
                 Observable stringObservable=getStringsObservable();
                 return (Observable<T>) Observable.merge(intObservable,stringObservable);
+            }
+            case ZIP:{
+                Observable stringObservable=getFromStringsObservable();
+                //Observable intObservable=Observable.interval(500,TimeUnit.SECONDS);
+                Observable intObservable=getIntegerObservable();
+
+                return (Observable<T>) Observable.zip(stringObservable, intObservable, new Func2<String,Integer,String>() {
+                    @Override
+                    public String call(String o, Integer o2) {
+                        return o+" "+String.valueOf(o2);
+                    }
+                });
             }
         }
     }
@@ -253,9 +265,11 @@ public class ObservableFactory {
         };
         return items;
     }
-    private static Observable getItemsObservable() {
+    private static Observable getIntegerObservable() {
         return Observable.from(getItems());
     }
+
+
 
     private static List<Integer> getDuplicates() {
         List<Integer> items = new ArrayList<Integer>() {
@@ -287,6 +301,16 @@ public class ObservableFactory {
         }
         //subscriber receives the whole list
         return Observable.just(items);
+    }
+
+
+    private static Observable getFromStringsObservable(){
+        List<String>items=new ArrayList<>();
+        for(char i='A';i<='E';i++){
+            items.add(String.valueOf(i));
+        }
+        //subscriber receives the whole list
+        return Observable.from(items);
     }
 
 
