@@ -51,7 +51,8 @@ public class ObservableConcept implements Parcelable {
         GROUP_BY,
         BUFFER,
         WINDOW,
-        CAST
+        CAST,
+        MERGE
     }
 
     private int titleResourceId;
@@ -164,6 +165,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.buffer,R.string.buffer_desc,R.string.buffer_short_desc,ConceptLevel.ADVANCED,ConceptType.BUFFER));
                 add(new ObservableConcept(R.string.window,R.string.window_desc,R.string.window_short_desc,ConceptLevel.ADVANCED,ConceptType.WINDOW));
                 add(new ObservableConcept(R.string.cast,R.string.cast_desc,R.string.cast_short_desc,ConceptLevel.ADVANCED,ConceptType.CAST));
+                add(new ObservableConcept(R.string.merge,R.string.merge_desc,R.string.merge_short_desc,ConceptLevel.ADVANCED,ConceptType.MERGE));
             }
         };
     }

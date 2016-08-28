@@ -197,5 +197,10 @@
     <string name="cast_short_desc">similar to <b>map</b> it transforms (casts) each item emitted from a source observable from its type to another type.</string>
     <string name="cast_desc">similar to <b>map</b> it transforms (casts) each item emitted from a source observable from its type to another type.
      In this example we transform each emitted Number item to an Integer</string>
+    
+    <string name="merge">Merge</string>
+    <string name="merge_short_desc">An observable that combines two or more observables into a single observable.</string>
+    <string name="merge_desc">An observable that combines two or more observables into a single observable. It\s useful when merging observables
+     that emit items asynchronously, the merged onservable will maintain the order emission. If observables are merged synchronously, they will be concatenated.</string>
 
 </resources>

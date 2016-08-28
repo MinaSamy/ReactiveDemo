@@ -160,7 +160,7 @@ public class ObservableFactory {
             case FLAT_MAP:{
                 //instead of making the subscriber receive the whole list, we'll flat map it so that the
                 //subscriber receives item by item, converting observable.just() to observable.from()
-                return (Observable<T>) getStringList().flatMap(new Func1<List<String>, Observable<?>>() {
+                return (Observable<T>) getStringsObservable().flatMap(new Func1<List<String>, Observable<?>>() {
                     @Override
                     public Observable<?> call(List<String> strings) {
                         return Observable.from(strings);
@@ -168,7 +168,7 @@ public class ObservableFactory {
                 });
             }
             case CONCAT_MAP:{
-                return (Observable<T>)getStringList().concatMap(new Func1<List<String>, Observable<?>>() {
+                return (Observable<T>) getStringsObservable().concatMap(new Func1<List<String>, Observable<?>>() {
                     @Override
                     public Observable<?> call(List<String> strings) {
                         return Observable.from(strings);
@@ -176,7 +176,7 @@ public class ObservableFactory {
                 });
             }
             case FLAT_MAP_ITERABLE:{
-                return (Observable<T>)getStringList().flatMapIterable(new Func1<List<String>, Iterable<?>>() {
+                return (Observable<T>) getStringsObservable().flatMapIterable(new Func1<List<String>, Iterable<?>>() {
                     @Override
                     public Iterable<?> call(List<String> strings) {
                         Collections.reverse(strings);
@@ -211,6 +211,11 @@ public class ObservableFactory {
             }
             case CAST:{
                 return (Observable<T>) Observable.from(getNumbers()).cast(Integer.class);
+            }
+            case MERGE:{
+                Observable intObservable=getItemsObservable();
+                Observable stringObservable=getStringsObservable();
+                return (Observable<T>) Observable.merge(intObservable,stringObservable);
             }
         }
     }
@@ -275,7 +280,7 @@ public class ObservableFactory {
         return items;
     }
 
-    private static Observable<List<String>>getStringList(){
+    private static Observable<List<String>> getStringsObservable(){
         List<String>items=new ArrayList<>();
         for(char i='A';i<='E';i++){
             items.add(String.valueOf(i));
