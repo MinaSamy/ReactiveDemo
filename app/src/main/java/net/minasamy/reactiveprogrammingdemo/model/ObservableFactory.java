@@ -134,30 +134,30 @@ public class ObservableFactory {
             case SKIP_LAST: {
                 return (Observable<T>) Observable.from(getItems()).skipLast(2);
             }
-            case SAMPLE:{
-                Observable itemsObservable=Observable.interval(3,TimeUnit.SECONDS);
-                Observable sampleObservable=itemsObservable.sample(5,TimeUnit.SECONDS);
+            case SAMPLE: {
+                Observable itemsObservable = Observable.interval(3, TimeUnit.SECONDS);
+                Observable sampleObservable = itemsObservable.sample(5, TimeUnit.SECONDS);
                 return sampleObservable;
             }
-            case THROTTLE_FIRST:{
-                Observable itemsObservable=Observable.interval(1,TimeUnit.SECONDS);
-                Observable sampleObservable=itemsObservable.throttleFirst(5,TimeUnit.SECONDS);
+            case THROTTLE_FIRST: {
+                Observable itemsObservable = Observable.interval(1, TimeUnit.SECONDS);
+                Observable sampleObservable = itemsObservable.throttleFirst(5, TimeUnit.SECONDS);
                 return sampleObservable;
             }
-            case THROTTLE_LAST:{
-                Observable itemsObservable=Observable.interval(1,TimeUnit.SECONDS);
-                Observable sampleObservable=itemsObservable.throttleLast(5,TimeUnit.SECONDS);
+            case THROTTLE_LAST: {
+                Observable itemsObservable = Observable.interval(1, TimeUnit.SECONDS);
+                Observable sampleObservable = itemsObservable.throttleLast(5, TimeUnit.SECONDS);
                 return sampleObservable;
             }
-            case MAP:{
+            case MAP: {
                 return (Observable<T>) Observable.from(getItems()).map(new Func1<Integer, Integer>() {
                     @Override
                     public Integer call(Integer item) {
-                        return item*2;
+                        return item * 2;
                     }
                 });
             }
-            case FLAT_MAP:{
+            case FLAT_MAP: {
                 //instead of making the subscriber receive the whole list, we'll flat map it so that the
                 //subscriber receives item by item, converting observable.just() to observable.from()
                 return (Observable<T>) getStringsObservable().flatMap(new Func1<List<String>, Observable<?>>() {
@@ -167,7 +167,7 @@ public class ObservableFactory {
                     }
                 });
             }
-            case CONCAT_MAP:{
+            case CONCAT_MAP: {
                 return (Observable<T>) getStringsObservable().concatMap(new Func1<List<String>, Observable<?>>() {
                     @Override
                     public Observable<?> call(List<String> strings) {
@@ -175,7 +175,7 @@ public class ObservableFactory {
                     }
                 });
             }
-            case FLAT_MAP_ITERABLE:{
+            case FLAT_MAP_ITERABLE: {
                 return (Observable<T>) getStringsObservable().flatMapIterable(new Func1<List<String>, Iterable<?>>() {
                     @Override
                     public Iterable<?> call(List<String> strings) {
@@ -184,16 +184,16 @@ public class ObservableFactory {
                     }
                 });
             }
-            case SCAN:{
+            case SCAN: {
                 return (Observable<T>) Observable.from(getItems()).scan(new Func2<Integer, Integer, Integer>() {
                     @Override
                     public Integer call(Integer integer, Integer integer2) {
-                        return integer+integer2;
+                        return integer + integer2;
                     }
                 });
             }
-            case GROUP_BY:{
-                Observable<GroupedObservable<String, String>> groupedItems= Observable.from(getNamesList()).groupBy(new Func1<String, String>() {
+            case GROUP_BY: {
+                Observable<GroupedObservable<String, String>> groupedItems = Observable.from(getNamesList()).groupBy(new Func1<String, String>() {
                     @Override
                     public String call(String s) {
                         //group items by the first letter
@@ -202,30 +202,49 @@ public class ObservableFactory {
                 });
                 return (Observable<T>) Observable.concat(groupedItems);
             }
-            case BUFFER:{
+            case BUFFER: {
                 return (Observable<T>) Observable.from(getItems()).buffer(2);
             }
-            case WINDOW:
-            {
-                return (Observable<T>)  Observable.from(getItems()).window(2);
+            case WINDOW: {
+                return (Observable<T>) Observable.from(getItems()).window(2);
             }
-            case CAST:{
+            case CAST: {
                 return (Observable<T>) Observable.from(getNumbers()).cast(Integer.class);
             }
-            case MERGE:{
-                Observable intObservable= getIntegerObservable();
-                Observable stringObservable=getStringsObservable();
-                return (Observable<T>) Observable.merge(intObservable,stringObservable);
+            case MERGE: {
+                Observable intObservable = getIntegerObservable();
+                Observable stringObservable = getStringsObservable();
+                return (Observable<T>) Observable.merge(intObservable, stringObservable);
             }
-            case ZIP:{
-                Observable stringObservable=getFromStringsObservable();
-                //Observable intObservable=Observable.interval(500,TimeUnit.SECONDS);
-                Observable intObservable=getIntegerObservable();
+            case ZIP: {
+                Observable stringObservable = getFromStringsObservable();
+                Observable intObservable = getIntegerObservable();
 
-                return (Observable<T>) Observable.zip(stringObservable, intObservable, new Func2<String,Integer,String>() {
+                return (Observable<T>) Observable.zip(stringObservable, intObservable, new Func2<String, Integer, String>() {
                     @Override
                     public String call(String o, Integer o2) {
-                        return o+" "+String.valueOf(o2);
+                        return o + " " + String.valueOf(o2);
+                    }
+                });
+            }
+            case JOIN: {
+                Observable observable1 = getFromStringsObservable();
+                Observable observable2 = getFromStringsObservable();
+
+                return observable1.join(observable2, new Func1<String, Observable>() {
+                    @Override
+                    public Observable call(String o) {
+                        return Observable.timer(1, TimeUnit.SECONDS);
+                    }
+                }, new Func1<String, Observable>() {
+                    @Override
+                    public Observable call(String o) {
+                        return Observable.timer(1, TimeUnit.SECONDS);
+                    }
+                }, new Func2<String, String, String>() {
+                    @Override
+                    public String call(String o, String o2) {
+                        return o + " " + o2;
                     }
                 });
             }
@@ -265,10 +284,10 @@ public class ObservableFactory {
         };
         return items;
     }
+
     private static Observable getIntegerObservable() {
         return Observable.from(getItems());
     }
-
 
 
     private static List<Integer> getDuplicates() {
@@ -294,9 +313,9 @@ public class ObservableFactory {
         return items;
     }
 
-    private static Observable<List<String>> getStringsObservable(){
-        List<String>items=new ArrayList<>();
-        for(char i='A';i<='E';i++){
+    private static Observable<List<String>> getStringsObservable() {
+        List<String> items = new ArrayList<>();
+        for (char i = 'A'; i <= 'E'; i++) {
             items.add(String.valueOf(i));
         }
         //subscriber receives the whole list
@@ -304,9 +323,9 @@ public class ObservableFactory {
     }
 
 
-    private static Observable getFromStringsObservable(){
-        List<String>items=new ArrayList<>();
-        for(char i='A';i<='E';i++){
+    private static Observable getFromStringsObservable() {
+        List<String> items = new ArrayList<>();
+        for (char i = 'A'; i <= 'E'; i++) {
             items.add(String.valueOf(i));
         }
         //subscriber receives the whole list
@@ -314,9 +333,8 @@ public class ObservableFactory {
     }
 
 
-
-    private static List<String>getNamesList(){
-        return new ArrayList<String>(){
+    private static List<String> getNamesList() {
+        return new ArrayList<String>() {
             {
                 add("John");
                 add("Mark");

@@ -53,7 +53,8 @@ public class ObservableConcept implements Parcelable {
         WINDOW,
         CAST,
         MERGE,
-        ZIP
+        ZIP,
+        JOIN
     }
 
     private int titleResourceId;
@@ -168,6 +169,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.cast,R.string.cast_desc,R.string.cast_short_desc,ConceptLevel.ADVANCED,ConceptType.CAST));
                 add(new ObservableConcept(R.string.merge,R.string.merge_desc,R.string.merge_short_desc,ConceptLevel.ADVANCED,ConceptType.MERGE));
                 add(new ObservableConcept(R.string.zip,R.string.zip_desc,R.string.zip_short_desc,ConceptLevel.ADVANCED,ConceptType.ZIP));
+                add(new ObservableConcept(R.string.join,R.string.join_desc,R.string.join_short_desc,ConceptLevel.ADVANCED,ConceptType.JOIN));
             }
         };
     }
