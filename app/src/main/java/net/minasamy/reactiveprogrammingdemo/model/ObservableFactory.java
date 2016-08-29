@@ -228,25 +228,39 @@ public class ObservableFactory {
                 });
             }
             case JOIN: {
-                Observable observable1 = getFromStringsObservable();
-                Observable observable2 = getFromStringsObservable();
+                final Observable observable1 = Observable.interval(1,TimeUnit.SECONDS).map(new Func1<Long,Integer>() {
 
-                return observable1.join(observable2, new Func1<String, Observable>() {
                     @Override
-                    public Observable call(String o) {
-                        return Observable.timer(1, TimeUnit.SECONDS);
+                    public Integer call(Long aLong) {
+                        return aLong.intValue();
+                    }
+                }).take(10);
+                Observable observable2 = Observable.interval(1,TimeUnit.SECONDS).map(new Func1<Long,String>() {
+
+                    @Override
+                    public String call(Long aLong) {
+                        int index=aLong.intValue()%getStringsList().size();
+                        return getStringsList().get(index);
+                    }
+                }).take(10);
+
+                return observable1.join(observable2, new Func1<Integer, Observable>() {
+                    @Override
+                    public Observable call(Integer s) {
+                        return Observable.timer(2, TimeUnit.SECONDS);
                     }
                 }, new Func1<String, Observable>() {
                     @Override
-                    public Observable call(String o) {
+                    public Observable call(String s) {
                         return Observable.timer(1, TimeUnit.SECONDS);
                     }
-                }, new Func2<String, String, String>() {
+                }, new Func2<Integer,String,String>() {
                     @Override
-                    public String call(String o, String o2) {
-                        return o + " " + o2;
+                    public String call(Integer s, String s2) {
+                        return s+" "+s2;
                     }
                 });
+
             }
         }
     }
@@ -320,6 +334,14 @@ public class ObservableFactory {
         }
         //subscriber receives the whole list
         return Observable.just(items);
+    }
+
+    private static List<String> getStringsList() {
+        List<String> items = new ArrayList<>();
+        for (char i = 'A'; i <= 'J'; i++) {
+            items.add(String.valueOf(i));
+        }
+       return items;
     }
 
 

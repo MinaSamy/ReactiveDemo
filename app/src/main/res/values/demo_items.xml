@@ -208,7 +208,9 @@
     <string name="zip_desc">An observable that receives data emitted from two more observables, applies a <b>Func</b> on them and return a new observable.</string>
 
     <string name="join">Join</string>
-    <string name="join_short_desc">combines items from two whenever an item from one observable is emitted during a time window specified by an item emitted from the other observable.</string>
-    <string name="join_desc">combines items from two observables working with time windows.</string>
+    <string name="join_short_desc">combines items from two observables based on overlaping intervals. Each item emitted from each interval has a time window for controlling the overlap duration.</string>
+    <string name="join_desc">combines items from two observables based on overlaping intervals. Each item emitted from each interval has a time window for controlling the overlap duration.
+        In this example for each item emitted by the source observable has an overlap window of 2 seconds, while each item emitted by the second observable has a window of 1 second,
+    the result is that final observable has items from the source double that from the second until all items from the second are emitted.</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package net.minasamy.reactiveprogrammingdemo.presenter;
 
+import android.util.Log;
+
 import net.minasamy.reactiveprogrammingdemo.model.ObservableConcept;
 import net.minasamy.reactiveprogrammingdemo.model.ObservableFactory;
 import net.minasamy.reactiveprogrammingdemo.view.DetailsView;
@@ -18,6 +20,8 @@ public class DetailsPresenter {
     private WeakReference<DetailsView> mView;
     private Observable<Object> mObserver;
 
+    private final String TAG=getClass().getName();
+
     public DetailsPresenter(DetailsView view, ObservableConcept.ConceptType demoItemType) {
         this.mView = new WeakReference<DetailsView>(view);
         this.mObserver = ObservableFactory.createObservable(demoItemType);
@@ -34,7 +38,7 @@ public class DetailsPresenter {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e(TAG,e.toString());
             }
 
             @Override
