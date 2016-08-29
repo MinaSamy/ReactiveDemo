@@ -213,4 +213,10 @@
         In this example for each item emitted by the source observable has an overlap window of 2 seconds, while each item emitted by the second observable has a window of 1 second,
     the result is that final observable has items from the source double that from the second until all items from the second are emitted.</string>
 
+    <string name="combine_latest">Combine Latest</string>
+    <string name="combine_latest_short_desc">Combines two observables by emitting an item that aggregates the latest item emitted from both observables
+        each time an item is emitted from either observables.</string>
+    <string name="combine_latest_desc">Combines two observables by emitting an item that aggregates the latest item emitted from both observables
+        each time an item is emitted from either observables</string>
+
 </resources>

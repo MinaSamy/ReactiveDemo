@@ -1,5 +1,7 @@
 package net.minasamy.reactiveprogrammingdemo.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -261,6 +263,14 @@ public class ObservableFactory {
                     }
                 });
 
+            }
+            case COMBINE_LATEST:{
+                return (Observable<T>) Observable.combineLatest(Observable.from(getNumbers()), Observable.from(getStringsList()), new Func2<Number, String, String>() {
+                    @Override
+                    public String call(Number number, String s) {
+                        return number+s;
+                    }
+                });
             }
         }
     }
