@@ -219,4 +219,9 @@
     <string name="combine_latest_desc">Combines two observables by emitting an item that aggregates the latest item emitted from both observables
         each time an item is emitted from either observables</string>
 
+    <string name="switch_map">Switch Map</string>
+    <string name="switch_map_short_desc">Applies a function to the observables emitted by the source observable and emits the latest observable it encounters</string>
+    <string name="switch_map_desc">Applies a function to the observables emitted by the source observable and emits the latest observable it encounters.
+     In this example the source observable emits multiple observable items, each observable is subscribed to on a new thread, the switch map will emit the latest observable it encounters from these observables.</string>
+
 </resources>

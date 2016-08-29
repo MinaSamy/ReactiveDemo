@@ -55,7 +55,8 @@ public class ObservableConcept implements Parcelable {
         MERGE,
         ZIP,
         JOIN,
-        COMBINE_LATEST
+        COMBINE_LATEST,
+        SWITCH_MAP
     }
 
     private int titleResourceId;
@@ -172,6 +173,7 @@ public class ObservableConcept implements Parcelable {
                 add(new ObservableConcept(R.string.zip,R.string.zip_desc,R.string.zip_short_desc,ConceptLevel.ADVANCED,ConceptType.ZIP));
                 add(new ObservableConcept(R.string.join,R.string.join_desc,R.string.join_short_desc,ConceptLevel.ADVANCED,ConceptType.JOIN));
                 add(new ObservableConcept(R.string.combine_latest,R.string.combine_latest_desc,R.string.combine_latest_desc,ConceptLevel.ADVANCED,ConceptType.COMBINE_LATEST));
+                add(new ObservableConcept(R.string.switch_map,R.string.switch_map_desc,R.string.switch_map_short_desc,ConceptLevel.ADVANCED,ConceptType.SWITCH_MAP));
             }
         };
     }

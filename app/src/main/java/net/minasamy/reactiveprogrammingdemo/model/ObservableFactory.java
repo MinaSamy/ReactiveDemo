@@ -1,7 +1,5 @@
 package net.minasamy.reactiveprogrammingdemo.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +11,7 @@ import rx.functions.Func0;
 import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.observables.GroupedObservable;
+import rx.schedulers.Schedulers;
 import rx.subjects.AsyncSubject;
 import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
@@ -230,18 +229,18 @@ public class ObservableFactory {
                 });
             }
             case JOIN: {
-                final Observable observable1 = Observable.interval(1,TimeUnit.SECONDS).map(new Func1<Long,Integer>() {
+                final Observable observable1 = Observable.interval(1, TimeUnit.SECONDS).map(new Func1<Long, Integer>() {
 
                     @Override
                     public Integer call(Long aLong) {
                         return aLong.intValue();
                     }
                 }).take(10);
-                Observable observable2 = Observable.interval(1,TimeUnit.SECONDS).map(new Func1<Long,String>() {
+                Observable observable2 = Observable.interval(1, TimeUnit.SECONDS).map(new Func1<Long, String>() {
 
                     @Override
                     public String call(Long aLong) {
-                        int index=aLong.intValue()%getStringsList().size();
+                        int index = aLong.intValue() % getStringsList().size();
                         return getStringsList().get(index);
                     }
                 }).take(10);
@@ -256,19 +255,28 @@ public class ObservableFactory {
                     public Observable call(String s) {
                         return Observable.timer(1, TimeUnit.SECONDS);
                     }
-                }, new Func2<Integer,String,String>() {
+                }, new Func2<Integer, String, String>() {
                     @Override
                     public String call(Integer s, String s2) {
-                        return s+" "+s2;
+                        return s + " " + s2;
                     }
                 });
 
             }
-            case COMBINE_LATEST:{
+            case COMBINE_LATEST: {
                 return (Observable<T>) Observable.combineLatest(Observable.from(getNumbers()), Observable.from(getStringsList()), new Func2<Number, String, String>() {
                     @Override
                     public String call(Number number, String s) {
-                        return number+s;
+                        return number + s;
+                    }
+                });
+            }
+            case SWITCH_MAP: {
+                //applies a function to the observables emitted by the source observable and emits the latest observable it encounters
+                return (Observable<T>) Observable.from(getObservablesList()).switchMap(new Func1<Observable<String>, Observable<?>>() {
+                    @Override
+                    public Observable<?> call(Observable<String> stringObservable) {
+                        return stringObservable;
                     }
                 });
             }
@@ -351,7 +359,7 @@ public class ObservableFactory {
         for (char i = 'A'; i <= 'J'; i++) {
             items.add(String.valueOf(i));
         }
-       return items;
+        return items;
     }
 
 
@@ -378,5 +386,13 @@ public class ObservableFactory {
                 add("Michael");
             }
         };
+    }
+
+    private static List<Observable<String>> getObservablesList() {
+        List<Observable<String>> observables = new ArrayList<>();
+        for (char i = 'A'; i <= 'J'; i++) {
+            observables.add(Observable.just(String.valueOf(i)).subscribeOn(Schedulers.newThread()));
+        }
+        return observables;
     }
 }
