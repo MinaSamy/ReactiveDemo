@@ -2,6 +2,7 @@ package net.minasamy.reactiveprogrammingdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,8 +23,17 @@ public class MainActivity extends AppCompatActivity implements DemosFragment.OnL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectAll().penaltyLog().build());
+
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectAll().penaltyLog()
+                    .build());
+        }
+
         //setup toolbar
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -38,10 +48,10 @@ public class MainActivity extends AppCompatActivity implements DemosFragment.OnL
 
     @Override
     public void onListFragmentInteraction(Sample item) {
-        switch (item.getId()){
+        switch (item.getId()) {
             case 0:
             default:
-                startActivity(new Intent(this,AppListActivity.class));
+                startActivity(new Intent(this, AppListActivity.class));
                 break;
         }
     }

@@ -14,6 +14,7 @@ import java.util.List;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class AppListActivity extends AppCompatActivity {
@@ -34,7 +35,8 @@ public class AppListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
 
         //load mApps list
-        mSubscription = Observable.from(Utils.getAppsList(this)).subscribeOn(Schedulers.io())
+        mSubscription = Observable.from(Utils.getAppsList(this)).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<AppInfo>() {
                     @Override
                     public void onCompleted() {
@@ -57,7 +59,7 @@ public class AppListActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        super.onStop();
         mSubscription.unsubscribe();
+        super.onStop();
     }
 }
