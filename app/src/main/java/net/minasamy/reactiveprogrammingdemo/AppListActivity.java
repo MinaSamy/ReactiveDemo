@@ -36,6 +36,7 @@ public class AppListActivity extends AppCompatActivity {
 
         //load mApps list
         mSubscription = Observable.from(Utils.getAppsList(getApplicationContext()))
+                .onBackpressureBuffer()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<AppInfo>() {
@@ -52,7 +53,7 @@ public class AppListActivity extends AppCompatActivity {
                     @Override
                     public void onNext(AppInfo appInfo) {
                         mApps.add(appInfo);
-                        adapter.notifyDataSetChanged();
+                        //adapter.notifyDataSetChanged();
                     }
                 });
     }
