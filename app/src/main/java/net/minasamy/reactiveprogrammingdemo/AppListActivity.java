@@ -35,7 +35,7 @@ public class AppListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
 
         //load mApps list
-        mSubscription = Observable.from(Utils.getAppsList(this)).subscribeOn(Schedulers.newThread())
+        mSubscription = Observable.from(Utils.getAppsList(getApplicationContext())).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<AppInfo>() {
                     @Override
