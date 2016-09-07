@@ -15,6 +15,9 @@ public class Sample {
     private String description;
     private int id;
 
+    public static final int APPS_LIST_ID=0;
+    public static final int STACK_EXCHANGE_ID=1;
+
     public String getTitle() {
         return title;
     }
@@ -36,7 +39,8 @@ public class Sample {
     public static List<Sample> getData(final Context context) {
         List<Sample> items = new ArrayList<Sample>() {
             {
-                add(new Sample(0,context.getString(R.string.apps_list), context.getString(R.string.apps_list_desc)));
+                add(new Sample(APPS_LIST_ID,context.getString(R.string.apps_list), context.getString(R.string.apps_list_desc)));
+                add(new Sample(STACK_EXCHANGE_ID,context.getString(R.string.stack_exchange),context.getString(R.string.stack_exchange_desc)));
             }
         };
         return items;

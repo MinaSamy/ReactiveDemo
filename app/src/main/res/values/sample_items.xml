@@ -2,4 +2,8 @@
 <resources>
     <string name="apps_list">Applications list</string>
     <string name="apps_list_desc">A sample application that lists the applications installed on device</string>
+
+    <string name="stack_exchange">StackExhange</string>
+    <string name="stack_exchange_desc">A sample that lists the top reputation users from <b>StackOverflow</b> site
+     using the StackExchage API</string>
 </resources>

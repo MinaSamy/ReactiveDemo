@@ -35,6 +35,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.minasamy.reactiveprogrammingdemo.MainActivity" />
         </activity>
+        <activity
+            android:name=".StackExchangeActivity"
+            android:label="@string/title_activity_stack_exchange"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

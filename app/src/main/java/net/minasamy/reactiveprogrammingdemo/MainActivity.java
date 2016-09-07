@@ -48,12 +48,19 @@ public class MainActivity extends AppCompatActivity implements DemosFragment.OnL
 
     @Override
     public void onListFragmentInteraction(Sample item) {
+        Intent intent = null;
         switch (item.getId()) {
-            case 0:
-            default:
-                startActivity(new Intent(this, AppListActivity.class));
+            case Sample.APPS_LIST_ID:
+            default: {
+                intent = new Intent(this, AppListActivity.class);
                 break;
+            }
+            case Sample.STACK_EXCHANGE_ID: {
+                intent = new Intent(this, StackExchangeActivity.class);
+                break;
+            }
         }
+        startActivity(intent);
     }
 
 

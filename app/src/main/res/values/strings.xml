@@ -14,4 +14,5 @@
     <string name="concepts">Concepts</string>
     <string name="title_activity_app_list">Application List</string>
     <string name="recycler_view_layout_manager">android.support.v7.widget.LinearLayoutManager</string>
+    <string name="title_activity_stack_exchange">StackExchange API</string>
 </resources>
