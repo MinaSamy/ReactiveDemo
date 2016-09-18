@@ -3,6 +3,7 @@ package net.minasamy.reactiveprogrammingdemo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
@@ -20,10 +21,14 @@ public class StackExchangeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_stack_exchange);
         Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        RecyclerView usersRecyclerView=(RecyclerView)findViewById(R.id.users_recycler_view);
+        usersRecyclerView.setHasFixedSize(true);
 
         //retrieve contributors
         StackExchangeService service=new StackExchangeService();

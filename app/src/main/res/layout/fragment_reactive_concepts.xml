@@ -1,6 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="usersViewModel"
+        type="net.minasamy.reactiveprogrammingdemo.viewmodel.StackExchangeUsersViewModel"/>
+</data>
+
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="net.minasamy.reactiveprogrammingdemo.fragment.ReactiveConceptsFragment"
@@ -19,3 +26,4 @@
     </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
+</layout>
