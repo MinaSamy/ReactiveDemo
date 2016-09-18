@@ -7,14 +7,17 @@ import com.google.gson.annotations.SerializedName;
  */
 public class StackExchangeUser {
     @SerializedName("display_name")
-    private String name;
+    public String name;
 
     @SerializedName("profile_image")
-    private String profileImageUrl;
+    public String profileImageUrl;
 
     @SerializedName("link")
-    private String profileLink;
+    public String profileLink;
 
     @SerializedName("reputation")
-    private int reputation;
+    public int reputation;
+
+    @SerializedName("badge_counts")
+    public BadgeCounts badgeCounts;
 }
