@@ -28,8 +28,8 @@ public class ReactiveConceptsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragmetnView = inflater.inflate(R.layout.fragment_reactive_concepts, container, false);
-        mRecyclerView = (RecyclerView) fragmetnView.findViewById(R.id.main_recycler_view);
+        View fragmentView = inflater.inflate(R.layout.fragment_reactive_concepts, container, false);
+        mRecyclerView = (RecyclerView) fragmentView.findViewById(R.id.main_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         //configure the layout manager
@@ -47,6 +47,6 @@ public class ReactiveConceptsFragment extends Fragment {
         MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(ObservableConcept.getSampleData());
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.addItemDecoration(new MainRecyclerViewItemDecoration());
-        return fragmetnView;
+        return fragmentView;
     }
 }
