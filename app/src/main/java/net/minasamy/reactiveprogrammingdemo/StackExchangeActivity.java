@@ -7,9 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import net.minasamy.reactiveprogrammingdemo.adapter.StackExchangeUsersAdapter;
 import net.minasamy.reactiveprogrammingdemo.model.StackExchangeUser;
 import net.minasamy.reactiveprogrammingdemo.service.StackExchangeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observer;
@@ -17,6 +19,8 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class StackExchangeActivity extends AppCompatActivity {
+
+    private List<StackExchangeUser> mUsers=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class StackExchangeActivity extends AppCompatActivity {
 
         RecyclerView usersRecyclerView=(RecyclerView)findViewById(R.id.users_recycler_view);
         usersRecyclerView.setHasFixedSize(true);
+        final StackExchangeUsersAdapter adapter=new StackExchangeUsersAdapter(mUsers);
+        usersRecyclerView.setAdapter(adapter);
 
         //retrieve contributors
         StackExchangeService service=new StackExchangeService();
@@ -47,7 +53,8 @@ public class StackExchangeActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(List<StackExchangeUser> stackExchangeUsers) {
-
+                        mUsers.addAll(stackExchangeUsers);
+                        adapter.notifyDataSetChanged();
                     }
                 });
     }

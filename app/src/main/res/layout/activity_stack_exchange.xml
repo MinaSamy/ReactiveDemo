@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="net.minasamy.reactiveprogrammingdemo.StackExchangeActivity">
+    tools:context="net.minasamy.reactiveprogrammingdemo.StackExchangeActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <android.support.design.widget.AppBarLayout
         android:theme="@style/AppTheme.AppBarOverlay"
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="@string/recycler_view_layout_manager"
-        android:id="@+id/users_recycler_view"/>
+        android:id="@+id/users_recycler_view"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>
