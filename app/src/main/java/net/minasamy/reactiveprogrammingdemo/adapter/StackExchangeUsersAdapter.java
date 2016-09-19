@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
 import net.minasamy.reactiveprogrammingdemo.R;
 import net.minasamy.reactiveprogrammingdemo.databinding.StackExchangeUserItemBinding;
 import net.minasamy.reactiveprogrammingdemo.model.StackExchangeUser;
@@ -50,7 +52,11 @@ public class StackExchangeUsersAdapter extends RecyclerView.Adapter<StackExchang
         }
 
         public void setUser(StackExchangeUser user) {
-            this.mBinding.setViewModel(new StackExchangeUserViewModel(user));
+            mBinding.setViewModel(new StackExchangeUserViewModel(user));
+            Glide.with(mBinding.userProfileImage.getContext())
+                    .load(user.profileImageUrl)
+                    .centerCrop()
+                    .into(mBinding.userProfileImage);
         }
     }
 }
