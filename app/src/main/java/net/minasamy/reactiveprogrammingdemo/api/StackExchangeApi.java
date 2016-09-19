@@ -13,6 +13,6 @@ import rx.Observable;
 public interface StackExchangeApi {
     String BASE_URL = "https://api.stackexchange.com/2.2/";
 
-    @GET("users?order=desc&sort=reputation&site=stackoverflow&page=1&pagesize=3")
+    @GET("users?order=desc&sort=reputation&site=stackoverflow&page=1&pagesize=30")
     Observable<List<StackExchangeUser>> getTopContributers();
 }

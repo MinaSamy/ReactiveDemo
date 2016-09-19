@@ -1,11 +1,16 @@
 package net.minasamy.reactiveprogrammingdemo.adapter;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import net.minasamy.reactiveprogrammingdemo.R;
 import net.minasamy.reactiveprogrammingdemo.databinding.StackExchangeUserItemBinding;
@@ -48,15 +53,25 @@ public class StackExchangeUsersAdapter extends RecyclerView.Adapter<StackExchang
 
         public UserViewHolder(StackExchangeUserItemBinding binding) {
             super(binding.getRoot());
-            this.mBinding=binding;
+            this.mBinding = binding;
         }
 
         public void setUser(StackExchangeUser user) {
             mBinding.setViewModel(new StackExchangeUserViewModel(user));
             Glide.with(mBinding.userProfileImage.getContext())
                     .load(user.profileImageUrl)
+                    .asBitmap()
                     .centerCrop()
-                    .into(mBinding.userProfileImage);
+                    .into(new SimpleTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                            RoundedBitmapDrawable img =
+                                    RoundedBitmapDrawableFactory.create(mBinding.userProfileImage.getContext().getResources()
+                                            , resource);
+                            img.setCornerRadius((float)resource.getWidth()/2.0f);
+                            mBinding.userProfileImage.setImageDrawable(img);
+                        }
+                    });
         }
     }
 }
