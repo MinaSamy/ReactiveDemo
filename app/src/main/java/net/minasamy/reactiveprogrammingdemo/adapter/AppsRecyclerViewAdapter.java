@@ -1,5 +1,8 @@
 package net.minasamy.reactiveprogrammingdemo.adapter;
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.minasamy.reactiveprogrammingdemo.R;
-import net.minasamy.reactiveprogrammingdemo.model.AppInfo;
 
 import java.util.List;
 
@@ -17,10 +19,12 @@ import java.util.List;
  */
 public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerViewAdapter.AppViewHolder> {
 
-    private List<AppInfo> mDataSet;
+    private List<ApplicationInfo> mDataSet;
+    private PackageManager mPackageManager;
 
-    public AppsRecyclerViewAdapter(List<AppInfo> dataset) {
+    public AppsRecyclerViewAdapter(Context context, List<ApplicationInfo> dataset) {
         this.mDataSet = dataset;
+        mPackageManager = context.getPackageManager();
     }
 
     @Override
@@ -51,9 +55,8 @@ public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerVi
         }
 
 
-        public void setItem(AppInfo appInfo) {
-            mAppIcon.setImageDrawable(appInfo.getLogo());
-            mAppName.setText(appInfo.getLabel());
+        public void setItem(ApplicationInfo appInfo) {
+            mAppIcon.setImageDrawable(appInfo.loadIcon(mPackageManager));
         }
     }
 }

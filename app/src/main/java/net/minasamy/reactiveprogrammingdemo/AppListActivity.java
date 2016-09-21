@@ -1,11 +1,11 @@
 package net.minasamy.reactiveprogrammingdemo;
 
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import net.minasamy.reactiveprogrammingdemo.adapter.AppsRecyclerViewAdapter;
-import net.minasamy.reactiveprogrammingdemo.model.AppInfo;
 import net.minasamy.reactiveprogrammingdemo.util.Utils;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class AppListActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private Subscription mSubscription;
-    private List<AppInfo> mApps = new ArrayList<>();
+    private List<ApplicationInfo> mApps = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +31,15 @@ public class AppListActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.appsRecyclerView);
         mRecyclerView.setHasFixedSize(true);
-        final AppsRecyclerViewAdapter adapter = new AppsRecyclerViewAdapter(mApps);
+        final AppsRecyclerViewAdapter adapter = new AppsRecyclerViewAdapter(getApplicationContext(), mApps);
         mRecyclerView.setAdapter(adapter);
 
         //load mApps list
         mSubscription = Observable.from(Utils.getAppsList(getApplicationContext()))
-                .onBackpressureBuffer()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<AppInfo>() {
+                .buffer(3)
+                .subscribe(new Observer<List<ApplicationInfo>>() {
                     @Override
                     public void onCompleted() {
 
@@ -51,9 +51,8 @@ public class AppListActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onNext(AppInfo appInfo) {
-                        mApps.add(appInfo);
-                        //adapter.notifyDataSetChanged();
+                    public void onNext(List<ApplicationInfo> applicationInfos) {
+                        mApps.addAll(applicationInfos);
                     }
                 });
     }

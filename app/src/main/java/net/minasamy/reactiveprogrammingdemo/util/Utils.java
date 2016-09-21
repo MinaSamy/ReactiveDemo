@@ -2,13 +2,9 @@ package net.minasamy.reactiveprogrammingdemo.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.graphics.drawable.Drawable;
 
-import net.minasamy.reactiveprogrammingdemo.model.AppInfo;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,18 +12,11 @@ import java.util.List;
  */
 public class Utils {
 
-    public static List<AppInfo> getAppsList(Context context) {
-        List<AppInfo> apps = new ArrayList<>();
+    public static List<ApplicationInfo> getAppsList(Context context) {
         final Intent appsIntent = new Intent(Intent.ACTION_MAIN);
         appsIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> resolveInfos = context.getPackageManager()
-                .queryIntentActivities(appsIntent, PackageManager.MATCH_ALL);
-        for(ResolveInfo info:resolveInfos){
-            Drawable logo=info.loadIcon(context.getPackageManager());
-            String label=info.loadLabel(context.getPackageManager()).toString();
-
-            apps.add(new AppInfo(logo,label));
-        }
+        List<ApplicationInfo> apps = context.getPackageManager()
+                .getInstalledApplications(PackageManager.GET_META_DATA);
         return apps;
     }
 }
