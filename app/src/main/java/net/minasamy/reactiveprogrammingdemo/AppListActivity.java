@@ -2,6 +2,7 @@ package net.minasamy.reactiveprogrammingdemo;
 
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
@@ -26,6 +27,16 @@ public class AppListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectAll().penaltyLog().build());
+
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectAll().penaltyLog()
+                    .build());
+        }
+
         setContentView(R.layout.activity_app_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
