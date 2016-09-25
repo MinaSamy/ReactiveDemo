@@ -17,6 +17,8 @@ import android.widget.TextView;
 import net.minasamy.reactiveprogrammingdemo.R;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +31,7 @@ public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerVi
     private List<ApplicationInfo> mDataSet;
     private PackageManager mPackageManager;
     private LruCache<Integer, Drawable> mMemoryCache;
-    private ThreadPoolExecutor mExecutor;
+    private ExecutorService mExecutor;
 
     public AppsRecyclerViewAdapter(Context context, List<ApplicationInfo> dataset) {
         this.mDataSet = dataset;
@@ -38,8 +40,7 @@ public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerVi
         mMemoryCache = new LruCache<>(5 * 1024 * 1024); //5 MB
 
         int numberOfCores = Runtime.getRuntime().availableProcessors() * 2;
-        mExecutor = new ThreadPoolExecutor(numberOfCores, numberOfCores, 10,
-                TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>());
+        mExecutor= Executors.newFixedThreadPool(5);
     }
 
     private void addIconToCache(int key, Drawable bmp) {
